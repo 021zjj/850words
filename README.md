@@ -1,2 +1,2 @@
 # simupro.cn
-存放simupro.cn网站
+用于展示Ogden basic english words
