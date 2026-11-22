@@ -3,63 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>850 基础英语单词 · Basic English 学习站</title>
-<meta name="description" content="奥格登 850 Basic English 核心词表的学习网站，适合 10-15 岁学生：分类词库、闪卡、测验、生词本，可离线在浏览器使用。">
+<title>850 基础英语单词 · 先扫一遍，再开口说</title>
+<meta name="description" content="奥格登 850 Basic English 词表学习站：闪卡先过一遍词，再把中文句子说成 850 词的英语，附普通英语对照。适合 10-15 岁学生。">
 <style>
 /* SECTION: reset */
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0}
 :root{
-  --bg:#f4f7fb;
-  --ink:#16233a;
-  --ink-soft:#5a6b85;
-  --line:#e2e8f2;
-  --card:#ffffff;
-  --brand:#2f6df6;
-  --brand-soft:#e8f0ff;
-  --c-ops:#2f6df6;
-  --c-pic:#12a37a;
-  --c-gen:#e8801f;
-  --c-qua:#9055e0;
-  --c-opp:#e0455f;
-  --ok:#12a37a;
+  --bg:#f4f7fb; --ink:#16233a; --ink-soft:#5a6b85; --line:#e2e8f2; --card:#fff;
+  --brand:#2f6df6; --brand-soft:#e8f0ff;
+  --c-ops:#2f6df6; --c-pic:#12a37a; --c-gen:#e8801f; --c-qua:#9055e0; --c-opp:#e0455f;
+  --ok:#12a37a; --bad:#e0455f;
   --shadow:0 1px 2px rgba(22,35,58,.05),0 8px 24px rgba(22,35,58,.06);
   --r:16px;
 }
 body{
   font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Segoe UI",system-ui,-apple-system,sans-serif;
-  background:var(--bg);color:var(--ink);line-height:1.6;
-  -webkit-font-smoothing:antialiased;
+  background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
 }
 img,svg,canvas{max-width:100%;height:auto}
-button,input,select{font:inherit;color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer;border:none;background:none}
-a{color:var(--brand);text-decoration:none}
 
 /* SECTION: header */
-.site-head{
-  position:sticky;top:0;z-index:20;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.head-inner{
-  max-width:1120px;margin:0 auto;padding:10px 16px;
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
-.logo-badge{
-  width:38px;height:38px;border-radius:12px;flex:0 0 auto;
-  background:linear-gradient(135deg,#2f6df6,#12a37a);
-  color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;
-}
+.site-head{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.head-inner{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800}
+.logo-badge{width:38px;height:38px;border-radius:12px;flex:0 0 auto;background:linear-gradient(135deg,#2f6df6,#12a37a);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800}
 .logo-text small{display:block;font-size:11px;font-weight:600;color:var(--ink-soft);letter-spacing:1px}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
-.tab{
-  padding:9px 13px;border-radius:999px;font-size:14px;font-weight:600;
-  color:var(--ink-soft);white-space:nowrap;min-height:40px;
-  display:inline-flex;align-items:center;
-}
+.tab{padding:9px 13px;border-radius:999px;font-size:14px;font-weight:600;color:var(--ink-soft);white-space:nowrap;min-height:40px;display:inline-flex;align-items:center}
 .tab:hover{background:var(--brand-soft);color:var(--brand)}
 .tab.on{background:var(--brand);color:#fff}
 
@@ -68,128 +41,137 @@ a{color:var(--brand);text-decoration:none}
 .panel{display:none}
 .panel.on{display:block}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}
-.grid{display:grid;gap:14px}
-.g-auto{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
 .sec-title{font-size:20px;margin:0 0 4px;font-weight:800}
 .sec-sub{margin:0 0 14px;color:var(--ink-soft);font-size:14px}
 .mt{margin-top:16px}
 
-/* SECTION: hero */
-.hero{
-  background:linear-gradient(135deg,#204a9c,#2f6df6 45%,#12a37a);
-  color:#fff;border-radius:22px;padding:26px 22px;position:relative;overflow:hidden;
-}
-.hero::after{
-  content:"";position:absolute;right:-70px;top:-70px;width:230px;height:230px;border-radius:50%;
-  background:rgba(255,255,255,.12)
-}
-.hero h1{margin:0 0 8px;font-size:clamp(22px,4.5vw,34px);line-height:1.25;position:relative}
-.hero p{margin:0;max-width:62ch;position:relative;opacity:.95}
-.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;position:relative}
-.chip{
-  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
-  padding:6px 11px;border-radius:999px;font-size:13px;font-weight:600
-}
-.stat-row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:16px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
-.stat b{display:block;font-size:26px;line-height:1.2}
-.stat span{font-size:13px;color:var(--ink-soft)}
-.bar{height:10px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:8px}
+/* SECTION: strip */
+.intro{background:linear-gradient(135deg,#204a9c,#2f6df6 45%,#12a37a);color:#fff;border-radius:20px;padding:20px}
+.intro h1{margin:0 0 6px;font-size:clamp(20px,4vw,28px);line-height:1.25}
+.intro p{margin:0;font-size:14px;opacity:.95;max-width:66ch}
+.cat-strip{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));margin-top:14px}
+.cat-chip{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px;border-top:4px solid var(--accent)}
+.cat-chip:hover{transform:translateY(-2px)}
+.cat-chip b{display:block;font-size:22px;color:var(--accent)}
+.cat-chip span{font-size:13px;font-weight:700}
+.cat-chip em{display:block;font-size:12px;color:var(--ink-soft);font-style:normal;margin-top:2px}
+.progress{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 14px;margin-top:12px;font-size:14px}
+.bar{height:9px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:7px}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,#2f6df6,#12a37a);width:0;transition:width .4s ease}
 
-/* SECTION: category cards */
-.cat-card{text-align:left;display:flex;flex-direction:column;gap:6px;border-top:4px solid var(--accent,var(--brand));transition:transform .15s ease}
-.cat-card:hover{transform:translateY(-2px)}
-.cat-card .n{font-size:28px;font-weight:800;color:var(--accent,var(--brand))}
-.cat-card h3{margin:0;font-size:16px}
-.cat-card p{margin:0;font-size:13px;color:var(--ink-soft)}
-.cat-card .eg{font-size:12px;color:var(--ink-soft);background:#f7f9fc;border-radius:8px;padding:6px 8px;margin-top:4px}
-
-/* SECTION: toolbar */
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-.field{
-  flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;
-  background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px
-}
-.field input{border:none;outline:none;background:none;width:100%;font-size:16px}
-.field svg{flex:0 0 auto;opacity:.55}
-.pill-row{display:flex;gap:8px;flex-wrap:wrap}
-.pill{
-  padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700;
-  background:#fff;border:1px solid var(--line);color:var(--ink-soft);min-height:38px
-}
-.pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.alpha{display:flex;gap:5px;flex-wrap:wrap}
-.alpha button{
-  width:34px;height:34px;border-radius:9px;font-size:13px;font-weight:700;
-  background:#fff;border:1px solid var(--line);color:var(--ink-soft)
-}
-.alpha button.on{background:var(--brand);border-color:var(--brand);color:#fff}
-.alpha button:disabled{opacity:.3;cursor:not-allowed}
-.hint{font-size:13px;color:var(--ink-soft)}
-
-/* SECTION: word list */
-.word-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(232px,1fr))}
-.wcard{
-  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 13px;
-  display:flex;flex-direction:column;gap:3px;position:relative;box-shadow:var(--shadow)
-}
-.wcard.done{border-color:#b8e5d5;background:#f3fbf7}
-.wcard .w{font-size:19px;font-weight:800;letter-spacing:.2px;display:flex;align-items:center;gap:8px;min-width:0}
-.wcard .w span{overflow-wrap:anywhere}
-.wcard .pos{font-size:11px;font-weight:700;color:#fff;background:var(--accent,var(--brand));padding:2px 7px;border-radius:6px;flex:0 0 auto}
-.wcard .m{font-size:14px;color:var(--ink-soft);overflow-wrap:anywhere}
-.wcard .idx{position:absolute;right:11px;top:11px;font-size:11px;color:#a9b6c9}
-.wcard .acts{display:flex;gap:6px;margin-top:8px}
-.mini{
-  font-size:12px;font-weight:700;padding:6px 9px;border-radius:8px;
-  border:1px solid var(--line);background:#fff;color:var(--ink-soft);min-height:34px
-}
-.mini:hover{border-color:var(--brand);color:var(--brand)}
-.mini.on{background:var(--brand);border-color:var(--brand);color:#fff}
-.pager{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:18px}
-.btn{
-  padding:11px 18px;border-radius:11px;font-weight:700;font-size:15px;
-  background:var(--brand);color:#fff;min-height:44px
-}
-.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
-.btn.ok{background:var(--ok)}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.empty{padding:36px 16px;text-align:center;color:var(--ink-soft)}
-
 /* SECTION: flashcard */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap}
+.pill{padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700;background:#fff;border:1px solid var(--line);color:var(--ink-soft);min-height:38px}
+.pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .fc-stage{max-width:560px;margin:0 auto}
-.fc{
-  perspective:1200px;height:280px;cursor:pointer
-}
+.fc{perspective:1200px;height:276px;cursor:pointer}
 .fc-in{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
 .fc.flip .fc-in{transform:rotateY(180deg)}
-.fc-face{
-  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px;text-align:center
-}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px;text-align:center}
 .fc-back{transform:rotateY(180deg);background:linear-gradient(160deg,#f7faff,#eef7f2)}
 .fc-face .lab{font-size:12px;font-weight:700;letter-spacing:1.4px;color:var(--ink-soft)}
 .fc-face .big{font-size:clamp(30px,7vw,46px);font-weight:800;overflow-wrap:anywhere}
-.fc-face .mid{font-size:clamp(20px,4.5vw,28px);font-weight:700;overflow-wrap:anywhere}
-.fc-face .sub{font-size:14px;color:var(--ink-soft)}
+.fc-face .mid{font-size:clamp(19px,4.4vw,26px);font-weight:700;overflow-wrap:anywhere}
+.fc-face .sub{font-size:13px;color:var(--ink-soft)}
 .fc-count{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-soft);margin:12px 2px}
 .fc-acts{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:12px}
-.fc-acts .btn{width:100%}
+.mini{font-size:12px;font-weight:700;padding:6px 9px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);min-height:34px}
+.mini:hover{border-color:var(--brand);color:var(--brand)}
+.btn{padding:11px 18px;border-radius:11px;font-weight:700;font-size:15px;background:var(--brand);color:#fff;min-height:44px}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.ok{background:var(--ok)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.pager{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:16px}
+
+/* SECTION: word browser */
+.field{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.field input{border:none;outline:none;background:none;width:100%;font-size:16px}
+.field svg{flex:0 0 auto;opacity:.55}
+.alpha{display:flex;gap:5px;flex-wrap:wrap}
+.alpha button{width:34px;height:34px;border-radius:9px;font-size:13px;font-weight:700;background:#fff;border:1px solid var(--line);color:var(--ink-soft)}
+.alpha button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.alpha button:disabled{opacity:.3;cursor:not-allowed}
+.hint{font-size:13px;color:var(--ink-soft)}
+.word-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(232px,1fr))}
+.wcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 13px;display:flex;flex-direction:column;gap:3px;position:relative;box-shadow:var(--shadow)}
+.wcard.done{border-color:#b8e5d5;background:#f3fbf7}
+.wcard .w{font-size:19px;font-weight:800;display:flex;align-items:center;gap:8px;min-width:0}
+.wcard .w span{overflow-wrap:anywhere}
+.wcard .pos{font-size:11px;font-weight:700;color:#fff;background:var(--accent);padding:2px 7px;border-radius:6px;flex:0 0 auto}
+.wcard .m{font-size:14px;color:var(--ink-soft);overflow-wrap:anywhere}
+.wcard .idx{position:absolute;right:11px;top:11px;font-size:11px;color:#a9b6c9}
+.wcard .acts{display:flex;gap:6px;margin-top:8px}
+.empty{padding:32px 16px;text-align:center;color:var(--ink-soft)}
+
+/* SECTION: use lab */
+.sub-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.sub-tab{padding:9px 14px;border-radius:11px;font-size:14px;font-weight:700;min-height:42px;background:#fff;border:1px solid var(--line);color:var(--ink-soft)}
+.sub-tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.use-panel{display:none}
+.use-panel.on{display:block}
+.rule{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(272px,1fr))}
+.rule .card{padding:16px;display:flex;flex-direction:column}
+.rule .num{width:26px;height:26px;border-radius:8px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;margin-bottom:8px}
+.rule h4{margin:0 0 6px;font-size:15px}
+.rule p{margin:0 0 8px;font-size:13px;color:var(--ink-soft)}
+.ex{font-size:13.5px;background:#f7f9fc;border-radius:10px;padding:8px 10px;margin-top:auto}
+.drill{margin-top:9px;border-top:1px dashed var(--line);padding-top:9px}
+.drill .q{font-size:13.5px;font-weight:700}
+.drill .a{font-size:13.5px;color:#0b6b4f;font-weight:600;margin-top:5px;overflow-wrap:anywhere}
+.drill .why{font-size:12px;color:var(--ink-soft);margin-top:3px}
+
+.sent{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}
+.sent-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.lv{font-size:11px;font-weight:800;letter-spacing:.6px;padding:3px 8px;border-radius:6px;color:#fff}
+.lv1{background:#12a37a} .lv2{background:#e8801f} .lv3{background:#9055e0}
+.sent-no{font-size:12px;color:#a9b6c9;font-weight:700}
+.sent-cn{font-size:19px;font-weight:800;margin:2px 0 10px;overflow-wrap:anywhere}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px}
+.chips span{font-size:12px;color:var(--ink-soft);font-weight:700;align-self:center}
+.chips button{font-size:12.5px;font-weight:700;padding:4px 8px;border-radius:7px;background:#f2f6fd;border:1px solid var(--line);color:var(--ink-soft)}
+.chips button:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+.type-area{width:100%;min-height:74px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;font-size:17px;line-height:1.6;background:#fff;resize:vertical;font-family:inherit}
+.type-area:focus{outline:2px solid var(--brand-soft);border-color:var(--brand)}
+.toks{font-size:16px;line-height:2;padding:9px 11px;border-radius:11px;background:#f7f9fc;min-height:44px;font-weight:600}
+.tok{padding:2px 4px;border-radius:5px;font-weight:700;overflow-wrap:anywhere}
+.tok.in{background:#eafaf3;color:#0b6b4f}
+.tok.out{background:#fdeef1;color:#98243a;text-decoration:underline dotted #e0455f}
+.tok.other{background:#eef2f9;color:var(--ink-soft)}
+.sent-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.reveal{margin-top:12px;display:grid;gap:10px}
+.ver{border-radius:12px;padding:12px 13px}
+.ver .tag{font-size:11px;font-weight:800;letter-spacing:.8px;display:block;margin-bottom:4px}
+.ver .line{font-size:17px;font-weight:700;overflow-wrap:anywhere}
+.ver .say{margin-top:6px}
+.ver-basic{background:#f0fbf6;border:1px solid #b8e5d5}
+.ver-basic .tag{color:#0b6b4f}
+.ver-normal{background:#f6f7fa;border:1px solid var(--line)}
+.ver-normal .tag{color:var(--ink-soft)}
+.trick{background:#fff8ef;border:1px solid #f0dcb8;border-radius:12px;padding:11px 13px;font-size:13.5px}
+.trick b{color:#95610d}
+
+.dict-row{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(272px,1fr))}
+.dict{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px;text-align:left}
+.dict .hard{font-size:17px;font-weight:800;overflow-wrap:anywhere}
+.dict .eq{font-size:11px;color:var(--ink-soft);font-weight:700;letter-spacing:.6px;margin:2px 0 6px}
+.dict .easy{font-size:15px;color:#0b6b4f;font-weight:600;overflow-wrap:anywhere}
+.dict .cn{font-size:12.5px;color:var(--ink-soft);margin-top:5px}
+.dict .kind{display:inline-block;font-size:10px;font-weight:800;padding:2px 6px;border-radius:5px;margin-bottom:5px}
+.dict .kind.w{background:#fdeef1;color:#98243a}
+.dict .kind.f{background:#eef2f9;color:var(--ink-soft)}
+.dict .kind.k{background:#eafaf3;color:#0b6b4f}
+.dict:hover{border-color:var(--brand)}
 
 /* SECTION: quiz */
 .q-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft);margin-bottom:10px}
 .q-word{font-size:clamp(28px,6vw,40px);font-weight:800;text-align:center;margin:10px 0 2px}
 .q-ask{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:16px}
 .opt-list{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.opt{
-  text-align:left;padding:14px 15px;border-radius:13px;border:1px solid var(--line);
-  background:#fff;font-size:16px;font-weight:600;min-height:52px;overflow-wrap:anywhere
-}
+.opt{text-align:left;padding:14px 15px;border-radius:13px;border:1px solid var(--line);background:#fff;font-size:16px;font-weight:600;min-height:52px;overflow-wrap:anywhere}
 .opt:hover:not(:disabled){border-color:var(--brand);background:var(--brand-soft)}
 .opt.right{border-color:var(--ok);background:#eafaf3;color:#0b6b4f}
-.opt.wrong{border-color:#e0455f;background:#fdeef1;color:#98243a}
+.opt.wrong{border-color:var(--bad);background:#fdeef1;color:#98243a}
 .opt:disabled{cursor:default}
 .result{text-align:center}
 .result .score{font-size:52px;font-weight:800;line-height:1.1}
@@ -198,46 +180,19 @@ a{color:var(--brand);text-decoration:none}
 .rv{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:14px}
 .rv b{overflow-wrap:anywhere}
 .rv .mk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:#fff;font-weight:800}
-.rv .mk.y{background:var(--ok)}
-.rv .mk.n{background:#e0455f}
+.rv .mk.y{background:var(--ok)} .rv .mk.n{background:var(--bad)}
 
-/* SECTION: steps */
-.steps{counter-reset:s;display:grid;gap:12px;margin:0;padding:0;list-style:none}
-.steps li{
-  counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:14px;
-  padding:14px 16px 14px 54px;position:relative
-}
-.steps li::before{
-  content:counter(s);position:absolute;left:14px;top:14px;width:28px;height:28px;border-radius:50%;
-  background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px
-}
-.steps li b{display:block;margin-bottom:2px}
-code{
-  background:#eef2f9;border:1px solid var(--line);border-radius:6px;padding:1px 6px;
-  font-family:ui-monospace,Consolas,Menlo,monospace;font-size:13px;overflow-wrap:anywhere
-}
-details.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 15px;margin-top:12px}
-details.box summary{font-weight:700;cursor:pointer;min-height:32px}
-details.box p{margin:10px 0 0}
-.callout{border-left:4px solid var(--gen);background:#fff8ef;padding:12px 14px;border-radius:0 12px 12px 0;font-size:14px}
-
-/* SECTION: footer */
 .foot{max-width:1120px;margin:0 auto;padding:0 16px 40px;color:var(--ink-soft);font-size:13px}
 .foot p{margin:6px 0}
-
-/* SECTION: toast */
-.toast{
-  position:fixed;left:50%;bottom:22px;transform:translate(-50%,16px);
-  background:#16233a;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;
-  opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:90vw;text-align:center
-}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,16px);background:#16233a;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:90vw;text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
 @media (max-width:600px){
   .head-inner{padding:9px 12px}
   .tabs{margin-left:0;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .wrap{padding:16px 12px 48px}
-  .fc{height:250px}
+  .fc{height:248px}
+  .sent-cn{font-size:17px}
 }
 </style>
 </head>
@@ -251,82 +206,30 @@ details.box p{margin:10px 0 0}
       <div class="logo-text">基础英语单词<small>BASIC ENGLISH</small></div>
     </div>
     <nav class="tabs" id="tabs">
-      <button class="tab on" data-go="home">首页</button>
+      <button class="tab on" data-go="cards">闪卡</button>
       <button class="tab" data-go="words">词库</button>
-      <button class="tab" data-go="cards">闪卡</button>
+      <button class="tab" data-go="use">开口用</button>
       <button class="tab" data-go="quiz">闯关测验</button>
-      <button class="tab" data-go="note">生词本</button>
-      <button class="tab" data-go="deploy">怎么发布</button>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
 
-  <!-- SECTION: panel home -->
-  <section class="panel on" id="p-home">
-    <div class="hero">
-      <h1>只背 850 个词，就能说英语</h1>
-      <p>1930 年，英国语言学家查尔斯·奥格登（C. K. Ogden）从英语里挑出 850 个最核心的词，命名为 Basic English。它们像一套「积木」：用这 850 块积木，可以搭出日常生活里绝大部分的表达。这个网站帮你一块一块把它们认全。</p>
-      <div class="hero-tags">
-        <span class="chip">100 个动作词</span>
-        <span class="chip">200 个画得出来的东西</span>
-        <span class="chip">400 个常用名词</span>
-        <span class="chip">150 个形容词</span>
-        <span class="chip">可离线使用</span>
-      </div>
-    </div>
-
-    <div class="stat-row">
-      <div class="stat"><b id="s-total">850</b><span>词表总词数</span></div>
-      <div class="stat"><b id="s-done">0</b><span>我标记「已掌握」</span><div class="bar"><i id="s-bar"></i></div></div>
-      <div class="stat"><b id="s-note">0</b><span>生词本里的词</span></div>
-      <div class="stat"><b id="s-best">—</b><span>测验最好成绩</span></div>
-    </div>
-
-    <h2 class="sec-title mt">五组词，分开学</h2>
-    <p class="sec-sub">点一张卡片，就能直接进入这一组的词库。</p>
-    <div class="grid g-auto" id="cat-cards"></div>
-
-    <div class="card mt">
-      <h2 class="sec-title">三步学习法</h2>
-      <ol class="steps">
-        <li><b>先扫一遍</b>在「词库」里挑一组，从 A 到 Z 浏览，遇到认识的点「已掌握」，不确定的点「生词本」。点喇叭图标可以听发音。</li>
-        <li><b>再刷闪卡</b>在「闪卡」里翻卡片，先想中文再翻面。答对了点「记住了」，答错点「还不熟」，它会自动进生词本。</li>
-        <li><b>最后闯关</b>在「闯关测验」里做 10 道题检验自己，看分数和错题解析，把错词收进生词本再回去刷。</li>
-      </ol>
-      <p class="callout mt">小提示：850 个词看着多，其实每天 15 个，两个月就能过完一轮。别贪多，能说出例句才算真的会。</p>
-    </div>
-  </section>
-
-  <!-- SECTION: panel words -->
-  <section class="panel" id="p-words">
-    <h2 class="sec-title">全部 850 词</h2>
-    <p class="sec-sub">可以按分组、首字母筛选，也可以直接搜英文或中文。</p>
-    <div class="toolbar">
-      <label class="field">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-        <input id="q" type="search" placeholder="搜单词或中文意思，比如 water / 水" autocomplete="off">
-      </label>
-      <button class="pill" id="only-new">只看没掌握的</button>
-    </div>
-    <div class="pill-row" id="cat-filter"></div>
-    <div class="alpha mt" id="alpha"></div>
-    <div class="toolbar mt">
-      <span class="hint" id="count-hint">共 850 个词</span>
-    </div>
-    <div class="word-grid" id="word-grid"></div>
-    <div class="pager">
-      <button class="btn ghost" id="prev">上一页</button>
-      <span class="hint" id="page-hint">1 / 1</span>
-      <button class="btn ghost" id="next">下一页</button>
-    </div>
-  </section>
-
   <!-- SECTION: panel cards -->
-  <section class="panel" id="p-cards">
-    <h2 class="sec-title">闪卡速记</h2>
-    <p class="sec-sub">先想中文意思，再点卡片翻面。系统会记住你每张卡的情况。</p>
+  <section class="panel on" id="p-cards">
+    <div class="intro">
+      <h1>先把 850 个词扫一遍</h1>
+      <p>1930 年语言学家奥格登挑出 850 个核心词，说清日常英语的绝大部分。别急着背拼写——先翻闪卡混个脸熟：看到词能想起大概意思就够了，认不出的点「还不熟」，它会稍后再出现一次。</p>
+    </div>
+    <div class="cat-strip" id="cat-strip"></div>
+    <div class="progress">
+      <span id="p-text">已翻过 0 / 850</span>
+      <div class="bar"><i id="p-bar"></i></div>
+    </div>
+
+    <h2 class="sec-title mt">闪卡速记</h2>
+    <p class="sec-sub">先想中文意思，再点卡片（或按空格）翻面。左右方向键换卡。</p>
     <div class="fc-stage">
       <div class="pill-row" id="card-cat" style="justify-content:center"></div>
       <div class="fc mt" id="fc">
@@ -334,7 +237,7 @@ details.box p{margin:10px 0 0}
           <div class="fc-face">
             <div class="lab">ENGLISH</div>
             <div class="big" id="fc-en">apple</div>
-            <div class="sub">点卡片翻面 · 也可以按空格键</div>
+            <div class="sub">点卡片翻面 · 按空格也行</div>
             <button class="mini" id="fc-say">🔊 发音</button>
           </div>
           <div class="fc-face fc-back">
@@ -345,32 +248,102 @@ details.box p{margin:10px 0 0}
         </div>
       </div>
       <div class="fc-count">
-        <span id="fc-pos">第 1 / 0 张</span>
+        <span id="fc-pos">第 1 / 850 张</span>
         <span id="fc-group">全组词表</span>
       </div>
       <div class="fc-acts">
-        <button class="btn ok" id="fc-know">记住了</button>
+        <button class="btn ok" id="fc-know">认识了</button>
         <button class="btn ghost" id="fc-unknow">还不熟</button>
       </div>
       <div class="pager">
         <button class="btn ghost" id="fc-prev">← 上一张</button>
         <button class="btn ghost" id="fc-shuffle">打乱顺序</button>
-        <button class="btn ghost" id="fc-next2">下一张 →</button>
+        <button class="btn ghost" id="fc-restart">重新过一遍</button>
       </div>
+    </div>
+  </section>
+
+  <!-- SECTION: panel words -->
+  <section class="panel" id="p-words">
+    <h2 class="sec-title">全部 850 词</h2>
+    <p class="sec-sub">想查哪个词就到这儿：按分组、首字母筛，或直接搜英文和中文。</p>
+    <div class="toolbar">
+      <label class="field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="q" type="search" placeholder="搜单词或中文意思，比如 water / 水" autocomplete="off">
+      </label>
+    </div>
+    <div class="pill-row" id="cat-filter"></div>
+    <div class="alpha mt" id="alpha"></div>
+    <div class="toolbar mt"><span class="hint" id="count-hint">共 850 个词</span></div>
+    <div class="word-grid" id="word-grid"></div>
+    <div class="pager">
+      <button class="btn ghost" id="prev">上一页</button>
+      <span class="hint" id="page-hint">1 / 1</span>
+      <button class="btn ghost" id="next">下一页</button>
+    </div>
+  </section>
+
+  <!-- SECTION: panel use -->
+  <section class="panel" id="p-use">
+    <h2 class="sec-title">开口用：把中文说成 850 词的英语</h2>
+    <p class="sec-sub">下面是中国人日常真会说的中文句子。先自己用英文说出来，再看 850 词版怎么写，并和普通英语对照——差别就在「换个说法」四个字上。</p>
+    <div class="sub-tabs" id="use-tabs">
+      <button class="sub-tab on" data-u="u1">开口练</button>
+      <button class="sub-tab" data-u="u2">核心心法</button>
+      <button class="sub-tab" data-u="u3">拆词词典</button>
+    </div>
+
+    <!-- u1 sentence practice -->
+    <div class="use-panel on" id="u1">
+      <div class="card">
+        <p style="margin:0 0 10px">玩法：<b>①</b> 读中文，想一句英文写进框里，别怕错。<b>②</b> 框下面实时标色——<span class="tok in">绿色</span>在 850 内、<span class="tok other">灰色</span>是 I / you / can 这类小词、<span class="tok out">红色</span>是表外的词，试着换掉它。<b>③</b> 写完再看答案，比较两个版本差在哪。</p>
+        <div class="pill-row" id="lv-row">
+          <button class="pill on" data-lv="all">全部句子</button>
+          <button class="pill" data-lv="1">① 入门</button>
+          <button class="pill" data-lv="2">② 进阶</button>
+          <button class="pill" data-lv="3">③ 挑战</button>
+        </div>
+        <p class="hint" id="sent-progress" style="margin-top:10px">已练 0 / 0 句</p>
+      </div>
+      <div class="mt" id="sent-list"></div>
+    </div>
+
+    <!-- u2 rules -->
+    <div class="use-panel" id="u2">
+      <div class="card">
+        <p style="margin:0 0 12px">十二条心法，每条下面都有一句<b>随堂小练</b>。先自己想 10 秒，再点开答案——答案全都在 850 词里。</p>
+        <div class="rule" id="rule-cards"></div>
+      </div>
+    </div>
+
+    <!-- u3 dictionary -->
+    <div class="use-panel" id="u3">
+      <div class="card">
+        <p style="margin:0">850 词表里<b>没有</b> people、big、try、want、understand、protect —— 这些才是要练的：把它们拆成 2～4 个小词。另外有三类信息要分清：<b>表外实词</b>（要换掉）、<b>虚词</b>（my、it、can，写作用没问题）、<b>表内词</b>（important、tall、happy、drink 其实都在表里，别绕远路）。点卡片可朗读。</p>
+      </div>
+      <div class="toolbar mt">
+        <label class="field">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="dict-q" type="search" placeholder="搜难词或中文，比如 want / 想要" autocomplete="off">
+        </label>
+      </div>
+      <div class="dict-row" id="dict-rows"></div>
+      <div class="empty" id="dict-empty" style="display:none">没有这个词条，换一个试试。</div>
     </div>
   </section>
 
   <!-- SECTION: panel quiz -->
   <section class="panel" id="p-quiz">
     <h2 class="sec-title">闯关测验</h2>
-    <p class="sec-sub">每关 10 题，四选一。答错的正确会自动收进生词本。</p>
+    <p class="sec-sub">每关 10 题，四选一。扫完词就来测，看哪些其实没记住。</p>
     <div class="pill-row" id="quiz-mode" style="justify-content:center">
       <button class="pill on" data-mode="en2zh">看英文选中文</button>
       <button class="pill" data-mode="zh2en">看中文选英文</button>
     </div>
     <div class="card mt" id="quiz-box">
       <div id="quiz-start">
-        <p>选择题来自 850 词表本身，出题范围可以选：只考某个分组，或者全组词表混着考。</p>
+        <p>出题范围可以自己选：只考某个分组，或者全组词表混着考。</p>
         <div class="pill-row mt" id="quiz-cat"></div>
         <div class="pager"><button class="btn" id="quiz-go">开始第 1 关</button></div>
       </div>
@@ -388,78 +361,24 @@ details.box p{margin:10px 0 0}
           <div class="grade" id="r-grade"></div>
           <div class="pager">
             <button class="btn" id="r-again">再来一关</button>
-            <button class="btn ghost" id="r-note">查看生词本</button>
+            <button class="btn ghost" id="r-cards">回闪卡补一补</button>
           </div>
         </div>
         <div class="review" id="r-review"></div>
       </div>
     </div>
   </section>
-
-  <!-- SECTION: panel note -->
-  <section class="panel" id="p-note">
-    <h2 class="sec-title">我的生词本</h2>
-    <p class="sec-sub">这里收集你在词库、闪卡或测验里标记为「还不熟」的词，全部保存在你自己这台设备上。</p>
-    <div class="toolbar">
-      <span class="hint" id="note-hint">共 0 个生词</span>
-      <button class="mini" id="note-clear">清空生词本</button>
-      <button class="mini" id="note-practice">只练这些生词</button>
-    </div>
-    <div class="word-grid" id="note-grid"></div>
-    <div class="empty" id="note-empty">还没有生词。去词库或闪卡里点「生词本」，词就会出现在这里。</div>
-  </section>
-
-  <!-- SECTION: panel deploy -->
-  <section class="panel" id="p-deploy">
-    <h2 class="sec-title">怎么把这个网站放到网上</h2>
-    <p class="sec-sub">这个页面是单文件静态网站，不需要服务器，最适合用 GitHub Pages 发布。下面是给自己练习用的最短流程。</p>
-
-    <div class="card">
-      <h3 class="sec-title">路线一：网页拖拽上传（最简单，5 分钟）</h3>
-      <ol class="steps">
-        <li><b>注册并新建仓库</b>登录 GitHub，点右上角 <code>+</code> → <code>New repository</code>，仓库名随便取（例如 <code>850-words</code>），可见性选 <code>Public</code>，点 <code>Create repository</code>。</li>
-        <li><b>改文件名</b>把本文件重命名为 <code>index.html</code>。GitHub Pages 会自动把这个文件当作网站首页。</li>
-        <li><b>上传</b>在仓库页面点 <code>add file</code> → <code>Upload files</code>，把 <code>index.html</code> 拖进去，再点 <code>Commit changes</code>。</li>
-        <li><b>打开 Pages</b>仓库里点 <code>Settings</code> → 左侧 <code>Pages</code> → <code>Branch</code> 选 <code>main</code>、文件夹选 <code>根目录 /</code> → <code>Save</code>。</li>
-        <li><b>访问</b>等一两分钟刷新，页面顶部会给出地址，形如 <code>https://你的用户名.github.io/850-words/</code>。把这个地址发给同学就能打开。</li>
-      </ol>
-    </div>
-
-    <div class="card mt">
-      <h3 class="sec-title">路线二：用 Git 命令行（练习真正的提交流程）</h3>
-      <ol class="steps">
-        <li><b>准备目录</b>新建一个空文件夹，把 <code>index.html</code> 放进去，在该目录里执行 <code>git init</code>。</li>
-        <li><b>提交</b>依次执行 <code>git add index.html</code> 和 <code>git commit -m "first page"</code>。</li>
-        <li><b>关联仓库</b>在 GitHub 上先建好空仓库，然后执行 <code>git remote add origin 仓库地址</code>，再 <code>git push -u origin main</code>（分支名以你仓库实际的为准）。</li>
-        <li><b>开启 Pages</b>和路线一第 5 步一样：<code>Settings</code> → <code>Pages</code> → 选分支 → <code>Save</code>。</li>
-      </ol>
-      <p class="callout mt">改内容之后怎么办？改完本地文件，再走一遍 <code>git add</code> → <code>git commit</code> → <code>git push</code>；网页地址不变，浏览器可能需要按 Ctrl+F5 强制刷新才能看到新版。</p>
-    </div>
-
-    <details class="box">
-      <summary>常见问题</summary>
-      <p><b>打开是 404？</b>多半是文件名不对——必须是 <code>index.html</code>（全小写），而且要放在仓库根目录或 Pages 指定的文件夹里。</p>
-      <p><b>地址里少了后半截？</b>仓库名会出现在网址路径里，形如 <code>/仓库名/</code>，完整地址以 <code>Settings → Pages</code> 页面显示的为准。</p>
-      <p><b>改了没变化？</b>GitHub Pages 发布有 1～2 分钟延迟，另外浏览器会缓存，强制刷新即可。</p>
-      <p><b>会不会很贵？</b>公开仓库的 GitHub Pages 免费额度对这种纯静态页面完全够用。</p>
-    </details>
-
-    <div class="card mt">
-      <h3 class="sec-title">关于这份词表</h3>
-      <p style="margin:0">词表内容为 C. K. Ogden《Basic English》（1930）公布的 850 词及其分组（Operations 100 / Picturable Things 200 / General Things 400 / Qualities General 100 / Qualities Opposites 50），属公开领域的历史词表。中文释义为便于中国学生理解而写的常用义项，一词在不同语境下可能有别的译法。发音使用浏览器自带的语音合成，不同设备上的音色与是否支持英语朗读会有差别。</p>
-    </div>
-  </section>
 </main>
 
 <footer class="foot">
-  <p>词表来源：C. K. Ogden, <em>Basic English</em>（1930）· 850 词表为公开领域内容。</p>
-  <p>学习进度、生词本、测验成绩只保存在你这台设备的浏览器里，不会上传到任何地方。清除浏览器数据会让进度消失。</p>
+  <p>词表来源：C. K. Ogden《Basic English》（1930）公布的 850 词，属公开领域内容。中文释义为便于中国学生理解而写的常用义项。</p>
+  <p>发音使用浏览器自带语音合成；进度只保存在你这台设备的浏览器里，不会上传到任何地方。</p>
 </footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
-/* SECTION: data */
+/* SECTION: cats */
 const CATS = [
   { key:'ops', name:'操作词', en:'Operations', n:100, accent:'var(--c-ops)',
     desc:'让句子转起来的「引擎」：动词、介词、连词、代词。这组最该先背。',
@@ -491,21 +410,17 @@ const CATS = [
 /* SECTION: state */
 const WORDS = [];
 CATS.forEach(function(c){
-  c.data.split('|').forEach(function(pair, i){
+  c.data.split('|').forEach(function(pair){
     const k = pair.indexOf('~');
     WORDS.push({
       w: pair.slice(0, k).trim(),
       m: pair.slice(k + 1).trim(),
-      cat: c.key,
-      pos: c.en.split(' ')[0],
-      accent: c.accent,
-      catName: c.name,
-      no: WORDS.length + 1
+      cat: c.key, accent: c.accent, catName: c.name, no: WORDS.length + 1
     });
   });
 });
 const TOTAL = WORDS.length;
-const LS = { done:'be850:done', note:'be850:note', best:'be850:best' };
+const LS = { done:'be850v2:done', seen:'be850v2:seen', best:'be850v2:best', sent:'be850v2:sent' };
 
 function loadSet(key){
   try { const v = JSON.parse(localStorage.getItem(key)); return new Set(Array.isArray(v) ? v : []); }
@@ -515,68 +430,235 @@ function saveSet(key, set){
   try { localStorage.setItem(key, JSON.stringify(Array.from(set))); } catch(e){}
 }
 const doneSet = loadSet(LS.done);
-const noteSet = loadSet(LS.note);
+const seenSet = loadSet(LS.seen);
+const sentSet = loadSet(LS.sent);
 
 const $ = function(id){ return document.getElementById(id); };
 function toast(msg){
   const t = $('toast'); t.textContent = msg; t.classList.add('on');
-  clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove('on'); }, 1800);
+  clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove('on'); }, 1900);
 }
-function esc(t){ return t; }
+
+/* SECTION: word classify
+   in   —— 在 850 词表内（含词表括号给出的变形，以及 -er/-ing/-ed 规则变形）
+   func —— 代词、冠词、助动词、数字：表内未收但自动掌握，不计分
+   out  —— 表外实词：需要换成简单说法的目标 */
+const INFL = ('be am is are was were been going goes went gone making made doing does done has had '
++ 'getting got giving gave given taking took taken putting puts keeping kept letting lets seeming seems '
++ 'seeing saw said says saying sending sent coming came '
++ 'less least more most gray grey plough '
++ 'men women feet teeth this these those learning teaching waiting driving reading writing '
++ 'wants needs likes hopes tries asks '
++ 'o yes no not and the a an').split(' ');
+
+const FUNC = ('i me my mine we us our ours you your yours he him his she her hers it its they them their '
++ 'who whom whose which what there that this these those then here '
++ 'can could should would may might must shall will '
++ 'one two three four five six seven eight nine ten eleven twelve twenty thirty forty fifty hundred '
++ 'nothing something anything anybody nobody everyone everybody everything '
++ 'mr mrs ms dr tv ok pm').split(' ');
+
+const IN_SET = new Set();
+CATS.forEach(function(c){
+  c.data.split('|').forEach(function(item){
+    String(item.split('~')[0]).split(/[,()\/]/).forEach(function(t){
+      t = t.trim().toLowerCase();
+      if (t) IN_SET.add(t);
+    });
+  });
+});
+const FUNC_SET = new Set(FUNC);
+INFL.forEach(function(x){ if (x) IN_SET.add(x); });
+
+function classify(token){
+  const t = String(token).toLowerCase().replace(/[^a-z'/-]/g, '');
+  if (!t) return 'func';
+  if (IN_SET.has(t) || IN_SET.has(t.replace(/-/g, '/'))) return 'in';
+  const stems = [
+    t.replace(/ies$/, 'y'),
+    t.replace(/es$/, ''),
+    t.replace(/s$/, ''),
+    t.replace(/ed$/, ''),
+    t.replace(/ed$/, 'e'),
+    t.replace(/ing$/, ''),
+    t.replace(/ing$/, 'e'),
+    t.replace(/([^aeiou])\1ing$/, '$1'),
+    t.replace(/er$/, ''),
+    t.replace(/est$/, ''),
+    t.replace(/([^aeiou])er$/, '$1'),
+    t.replace(/([^aeiou])est$/, '$1')
+  ];
+  if (stems.some(function(s){ return s && IN_SET.has(s); })) return 'in';
+  if (FUNC_SET.has(t)) return 'func';
+  return 'out';
+}
+function tokenize(text){
+  return String(text).split(/(\s+|[,.;:!?、。！？:;])/).filter(function(x){ return x !== '' && x !== undefined; });
+}
+
+/* SECTION: speech */
+function speak(text){
+  if (!('speechSynthesis' in window)) { toast('这台设备的浏览器不支持发音功能'); return; }
+  try {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(String(text));
+    u.lang = 'en-US'; u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  } catch(e){ toast('发音失败，请检查系统是否装了英语语音'); }
+}
 
 /* SECTION: nav */
 function go(name){
   document.querySelectorAll('.panel').forEach(function(p){ p.classList.toggle('on', p.id === 'p-' + name); });
   document.querySelectorAll('.tab').forEach(function(b){ b.classList.toggle('on', b.dataset.go === name); });
-  if (name === 'note') renderNote();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 $('tabs').addEventListener('click', function(e){
   const b = e.target.closest('.tab'); if (b) go(b.dataset.go);
 });
-
-/* SECTION: home render */
 function catByKey(k){ return CATS.find(function(c){ return c.key === k; }); }
-function countBy(k){ return WORDS.filter(function(w){ return w.cat === k; }).length; }
 
-function renderHome(){
-  const box = $('cat-cards'); box.textContent = '';
+/* SECTION: category strip */
+function renderStrip(){
+  const box = $('cat-strip'); box.textContent = '';
+  const all = document.createElement('button');
+  all.className = 'cat-chip';
+  all.style.setProperty('--accent', 'var(--brand)');
+  const ab = document.createElement('b'); ab.textContent = TOTAL;
+  const an = document.createElement('span'); an.textContent = '全组词表';
+  const ae = document.createElement('em'); ae.textContent = '按词表原顺序过一遍';
+  all.append(ab, an, ae);
+  all.addEventListener('click', function(){ setDeck('all', false); });
+  box.appendChild(all);
+
   CATS.forEach(function(c){
-    const btn = document.createElement('button');
-    btn.className = 'card cat-card';
-    btn.style.setProperty('--accent', c.accent);
-    const n = document.createElement('div'); n.className = 'n'; n.textContent = c.n;
-    const h = document.createElement('h3'); h.textContent = c.name + ' ' + c.en;
-    const p = document.createElement('p'); p.textContent = c.desc;
-    const eg = document.createElement('div'); eg.className = 'eg'; eg.textContent = c.eg;
-    btn.append(n, h, p, eg);
-    btn.addEventListener('click', function(){ setFilter(c.key); go('words'); });
-    box.appendChild(btn);
+    const b = document.createElement('button');
+    b.className = 'cat-chip';
+    b.style.setProperty('--accent', c.accent);
+    const n = document.createElement('b'); n.textContent = c.n;
+    const nm = document.createElement('span'); nm.textContent = c.name;
+    const eg = document.createElement('em'); eg.textContent = c.eg;
+    b.append(n, nm, eg);
+    b.title = c.desc;
+    b.addEventListener('click', function(){ setDeck(c.key, false); });
+    box.appendChild(b);
   });
-  refreshStats();
 }
-function refreshStats(){
-  $('s-total').textContent = TOTAL;
-  $('s-done').textContent = doneSet.size;
-  $('s-bar').style.width = (doneSet.size / TOTAL * 100) + '%';
-  $('s-note').textContent = noteSet.size;
-  let best = null;
-  try { best = localStorage.getItem(LS.best); } catch(e){}
-  $('s-best').textContent = (best === null || best === '') ? '—' : best + ' 分';
+
+/* SECTION: flashcards */
+const fc = { list: [], i: 0, cat: 'all', requeue: [] };
+function shuffleArr(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
 }
+function buildDeck(cat){
+  return (cat === 'all') ? WORDS.slice() : WORDS.filter(function(w){ return w.cat === cat; });
+}
+function renderCardCat(){
+  const row = $('card-cat'); row.textContent = '';
+  [{ key:'all', name:'全组词表' }].concat(CATS.map(function(c){ return { key:c.key, name:c.name }; }))
+  .forEach(function(it){
+    const b = document.createElement('button');
+    b.className = 'pill' + (fc.cat === it.key ? ' on' : '');
+    b.textContent = it.name;
+    b.addEventListener('click', function(){ setDeck(it.key, false); });
+    row.appendChild(b);
+  });
+}
+function setDeck(cat, shuffle){
+  fc.cat = cat;
+  fc.list = buildDeck(cat);
+  if (shuffle) fc.list = shuffleArr(fc.list);
+  fc.requeue = [];
+  fc.i = 0;
+  renderCardCat();
+  paintCard();
+}
+function paintCard(){
+  const w = fc.list[fc.i];
+  $('fc').classList.remove('flip');
+  if (!w) {
+    $('fc-en').textContent = '—';
+    $('fc-zh').textContent = '这组没有词';
+    $('fc-meta').textContent = '';
+    $('fc-pos').textContent = '第 0 / 0 张';
+    return;
+  }
+  $('fc-en').textContent = w.w;
+  $('fc-zh').textContent = w.m;
+  $('fc-meta').textContent = w.catName + ' · 第 ' + w.no + ' 号';
+  $('fc-pos').textContent = '第 ' + (fc.i + 1) + ' / ' + fc.list.length + ' 张';
+  $('fc-group').textContent = (fc.cat === 'all') ? '全组词表' : catByKey(fc.cat).name;
+  refreshProgress();
+}
+function fcMove(step){
+  if (!fc.list.length) return;
+  fc.i = (fc.i + step + fc.list.length) % fc.list.length;
+  paintCard();
+}
+function markSeen(w){
+  if (w && !seenSet.has(w.w)) { seenSet.add(w.w); saveSet(LS.seen, seenSet); }
+  refreshProgress();
+}
+function refreshProgress(){
+  $('p-text').textContent = '已翻过 ' + seenSet.size + ' / ' + TOTAL
+    + (doneSet.size ? ' · 其中 ' + doneSet.size + ' 个已认识' : '');
+  $('p-bar').style.width = (seenSet.size / TOTAL * 100) + '%';
+}
+$('fc').addEventListener('click', function(e){
+  if (e.target.id === 'fc-say') return;
+  $('fc').classList.toggle('flip');
+});
+$('fc-say').addEventListener('click', function(){ if (fc.list[fc.i]) speak(fc.list[fc.i].w); });
+$('fc-know').addEventListener('click', function(){
+  const w = fc.list[fc.i]; if (!w) return;
+  doneSet.add(w.w);
+  saveSet(LS.done, doneSet);
+  markSeen(w);
+  fcMove(1);
+});
+$('fc-unknow').addEventListener('click', function(){
+  const w = fc.list[fc.i]; if (!w) return;
+  doneSet.delete(w.w);
+  saveSet(LS.done, doneSet);
+  markSeen(w);
+  /* 还不熟的词攒满 5 个就插回队列，让它很快再出现一次 */
+  fc.requeue.push(w);
+  if (fc.requeue.length >= 5) {
+    const back = fc.requeue.shift();
+    const at = Math.min(fc.i + 6, fc.list.length);
+    fc.list.splice(at, 0, back);
+    toast('「' + back.w + '」等词稍后会再出现');
+  }
+  fcMove(1);
+});
+$('fc-prev').addEventListener('click', function(){ fcMove(-1); });
+$('fc-shuffle').addEventListener('click', function(){ setDeck(fc.cat, true); toast('顺序已打乱'); });
+$('fc-restart').addEventListener('click', function(){ setDeck(fc.cat, false); toast('回到第一张'); });
+document.addEventListener('keydown', function(e){
+  if (!$('p-cards').classList.contains('on')) return;
+  const tag = (document.activeElement && document.activeElement.tagName) || '';
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+  if (e.code === 'Space') { e.preventDefault(); $('fc').classList.toggle('flip'); }
+  if (e.code === 'ArrowRight') fcMove(1);
+  if (e.code === 'ArrowLeft') fcMove(-1);
+});
 
 /* SECTION: word browser */
 const PAGE = 48;
-const st = { q:'', cat:'all', letter:'', onlyNew:false, page:1 };
+const st = { q:'', cat:'all', letter:'', page:1 };
 
 function renderFilters(){
   const row = $('cat-filter'); row.textContent = '';
-  const items = [{ key:'all', name:'全部 ' + TOTAL }].concat(CATS.map(function(c){
+  [{ key:'all', name:'全部 ' + TOTAL }].concat(CATS.map(function(c){
     return { key:c.key, name:c.name + ' ' + c.n };
-  }));
-  items.forEach(function(it){
+  })).forEach(function(it){
     const b = document.createElement('button');
-    b.className = 'pill' + ((st.cat === it.key) ? ' on' : '');
+    b.className = 'pill' + (st.cat === it.key ? ' on' : '');
     b.textContent = it.name;
     b.addEventListener('click', function(){ setFilter(it.key); });
     row.appendChild(b);
@@ -605,24 +687,20 @@ function matched(){
   return WORDS.filter(function(w){
     if (st.cat !== 'all' && w.cat !== st.cat) return false;
     if (st.letter && w.w[0].toUpperCase() !== st.letter) return false;
-    if (st.onlyNew && doneSet.has(w.w)) return false;
-    if (q && w.w.toLowerCase().indexOf(q) !== 0 && w.w.toLowerCase().indexOf(q) < 0 && w.m.indexOf(q) < 0) return false;
+    if (q && w.w.toLowerCase().indexOf(q) < 0 && w.m.indexOf(q) < 0) return false;
     return true;
   });
 }
-
 function wordCard(w){
   const card = document.createElement('div');
   card.className = 'wcard' + (doneSet.has(w.w) ? ' done' : '');
   card.style.setProperty('--accent', w.accent);
 
   const idx = document.createElement('div'); idx.className = 'idx'; idx.textContent = '#' + w.no;
-
   const line = document.createElement('div'); line.className = 'w';
   const wt = document.createElement('span'); wt.textContent = w.w;
   const pos = document.createElement('span'); pos.className = 'pos'; pos.textContent = w.catName;
   line.append(wt, pos);
-
   const mean = document.createElement('div'); mean.className = 'm'; mean.textContent = w.m;
 
   const acts = document.createElement('div'); acts.className = 'acts';
@@ -630,27 +708,16 @@ function wordCard(w){
   say.addEventListener('click', function(){ speak(w.w); });
   const dn = document.createElement('button');
   dn.className = 'mini' + (doneSet.has(w.w) ? ' on' : '');
-  dn.textContent = doneSet.has(w.w) ? '已掌握 ✓' : '已掌握';
+  dn.textContent = doneSet.has(w.w) ? '已认识 ✓' : '已认识';
   dn.addEventListener('click', function(){
-    if (doneSet.has(w.w)) { doneSet.delete(w.w); }
-    else { doneSet.add(w.w); noteSet.delete(w.w); }
-    saveSet(LS.done, doneSet); saveSet(LS.note, noteSet);
-    refreshStats(); renderWords(); if ($('p-note').classList.contains('on')) renderNote();
+    if (doneSet.has(w.w)) doneSet.delete(w.w); else { doneSet.add(w.w); markSeen(w); }
+    saveSet(LS.done, doneSet);
+    renderWords();
   });
-  const nt = document.createElement('button');
-  nt.className = 'mini' + (noteSet.has(w.w) ? ' on' : '');
-  nt.textContent = noteSet.has(w.w) ? '在生词本 ✓' : '生词本';
-  nt.addEventListener('click', function(){
-    if (noteSet.has(w.w)) { noteSet.delete(w.w); toast('已从生词本移出'); }
-    else { noteSet.add(w.w); toast('已加入生词本'); }
-    saveSet(LS.note, noteSet); refreshStats(); renderWords();
-    if ($('p-note').classList.contains('on')) renderNote();
-  });
-  acts.append(say, dn, nt);
+  acts.append(say, dn);
   card.append(idx, line, mean, acts);
   return card;
 }
-
 function renderWords(){
   const list = matched();
   const pages = Math.max(1, Math.ceil(list.length / PAGE));
@@ -665,106 +732,386 @@ function renderWords(){
   } else {
     slice.forEach(function(w){ grid.appendChild(wordCard(w)); });
   }
-  $('count-hint').textContent = '共 ' + list.length + ' 个词'
-    + (doneSet.size ? ' · 已掌握 ' + doneSet.size + ' 个' : '');
+  $('count-hint').textContent = '共 ' + list.length + ' 个词';
   $('page-hint').textContent = st.page + ' / ' + pages;
   $('prev').disabled = st.page <= 1;
   $('next').disabled = st.page >= pages;
 }
-
 $('q').addEventListener('input', function(e){ st.q = e.target.value; st.page = 1; renderWords(); });
-$('only-new').addEventListener('click', function(){
-  st.onlyNew = !st.onlyNew;
-  $('only-new').classList.toggle('on', st.onlyNew);
-  st.page = 1; renderWords();
-});
 $('prev').addEventListener('click', function(){ st.page--; renderWords(); });
 $('next').addEventListener('click', function(){ st.page++; renderWords(); });
 
-/* SECTION: speech */
-function speak(word){
-  if (!('speechSynthesis' in window)) { toast('这台设备的浏览器不支持发音功能'); return; }
-  try {
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(word);
-    u.lang = 'en-US'; u.rate = 0.85;
-    window.speechSynthesis.speak(u);
-  } catch(e){ toast('发音失败，请检查系统是否安装了英语语音'); }
+/* SECTION: sentence bank
+   lv 1 入门 / 2 进阶 / 3 挑战
+   basic = 只用 850 词的说法；normal = 普通英语；trick = 差别在哪 */
+const SENTENCES = [
+  { lv:1, cn:'我想要一杯水。', hint:['desire','have','cup'],
+    basic:'I have a desire for a cup of water.',
+    normal:'I want a glass of water.',
+    trick:'want 不在 850 里，desire（渴望）在。have a desire for 就是「想要」。' },
+  { lv:1, cn:'这本书是我的。', hint:['of','mine'],
+    basic:'This book is of mine.',
+    normal:'This book is mine.',
+    trick:'所有格用 of + 名词：属于我的 = of mine。' },
+  { lv:1, cn:'这个我不明白。', hint:['sense','clear'],
+    basic:'The sense of this is not clear to me.',
+    normal:'I do not understand this.',
+    trick:'understand 不在表里，改说「它的意思不清楚」。' },
+  { lv:1, cn:'明天见。', hint:['will','with','you'],
+    basic:'Tomorrow I will be with you.',
+    normal:'See you tomorrow.',
+    trick:'用 be with you（和你在一起）表达「见你」，时间词放前面更清楚。' },
+  { lv:1, cn:'我每天早上喝两杯水。', hint:['have','glass','morning'],
+    basic:'I have two glasses of water every morning.',
+    normal:'I drink two glasses of water every morning.',
+    trick:'这句两种都对：drink 在表里，have 更万能——吃、喝、生病都能用它。' },
+  { lv:1, cn:'请帮帮我。', hint:['give','help','please'],
+    basic:'Give me help, please.',
+    normal:'Please help me.',
+    trick:'help 配 give 更稳：give me help = 给我帮助。' },
+  { lv:1, cn:'他比其余的人高很多。', hint:['tall','than','rest'],
+    basic:'He is much taller than the rest.',
+    normal:'He is much taller than everyone else.',
+    trick:'这句两边几乎一样：tall 在表里，加 er 变比较级，much 表示「……得多」。' },
+
+  { lv:2, cn:'因为下雨，我们没能出去玩。', hint:['because','able','play','wet'],
+    basic:'Because it was wet, we were not able to go out for play.',
+    normal:'Because it rained, we could not go out to play.',
+    trick:'because 本身就在 850 里，放心用。真正要换的是 could not —— 说 were not able to。' },
+  { lv:2, cn:'请把窗户打开，屋里太热了。', hint:['put','open','full','heat'],
+    basic:'Please put the window open; the room is full of heat.',
+    normal:'Please open the window. It is too hot in here.',
+    trick:'open 在 850 里是形容词「开着的」，所以动作要说 put ... open。' },
+  { lv:2, cn:'我花了两个小时才写完。', hint:['hour','time','writing','done'],
+    basic:'Two hours of time went by before my writing was done.',
+    normal:'It took me two hours to finish writing.',
+    trick:'中文的「花费」不直接用 take，改成「两小时过去了」，主语换成时间。' },
+  { lv:2, cn:'他看起来不舒服。', hint:['seem','need','rest'],
+    basic:'He seems to be in need of rest.',
+    normal:'He does not look well.',
+    trick:'seem（看来好像）是 100 个操作词之一；「不舒服」说成「需要休息」。' },
+  { lv:2, cn:'这件事我有不同意见。', hint:['different','opinion'],
+    basic:'I have a different opinion about it.',
+    normal:'I disagree with you about this.',
+    trick:'disagree 不在表里，但 different + opinion 都在，合起来就是「不同意」。' },
+  { lv:2, cn:'我对音乐很有兴趣。', hint:['strong','interest','music'],
+    basic:'I have a strong interest in music.',
+    normal:'I am very interested in music.',
+    trick:'interested 不在表里；interest 当名词用就回到表内了。' },
+  { lv:2, cn:'我不喜欢这种天气。', hint:['love','weather','like'],
+    basic:'I have no love for weather like this.',
+    normal:'I do not like this sort of weather.',
+    trick:'「不喜欢」说成 have no love for；这里的 like 是「像……一样」。' },
+
+  { lv:3, cn:'这部小说讲的是一个家庭五十年的生活。', hint:['story','picture','give'],
+    basic:'The story gives the picture of a family over fifty years.',
+    normal:'The novel gives a picture of fifty years of one family’s life.',
+    trick:'novel（小说）和 life 都不在表里，story（故事）在；「描写」= give the picture of。' },
+  { lv:3, cn:'我们应该保护环境。', hint:['right','keep','clean','earth'],
+    basic:'It is right for us to keep the earth clean.',
+    normal:'We should keep the environment clean.',
+    trick:'environment 和 world 都不在 850 里 —— earth（地球、大地）+ keep clean（保持干净）就够了。' },
+  { lv:3, cn:'这个问题不容易解决。', hint:['question','simple','answer'],
+    basic:'For this question, there is no simple way of giving an answer.',
+    normal:'This question is not easy to give an answer to.',
+    trick:'「解决一个问题」= give an answer to a question，三个词全在表里。' },
+  { lv:3, cn:'他对人很好，大家都喜欢他。', hint:['kind','persons','reason','love'],
+    basic:'He is kind to all persons, and for this reason he has the love of all.',
+    normal:'He is kind to people, so everyone has love for him.',
+    trick:'people 不在表里，用 persons；「大家都喜欢他」= 他得到了所有人的爱。' },
+  { lv:3, cn:'不付出努力就不会有进步。', hint:['with no','work','growth'],
+    basic:'With no work for it, there will be no growth.',
+    normal:'Without hard work, there will be no progress.',
+    trick:'without → with no；progress → growth（生长、增长）。' },
+  { lv:3, cn:'这件事请保密，别让其他人知道。', hint:['secret','knowledge','other','person'],
+    basic:'Let this be a secret between you and me: give no knowledge of it to any other person.',
+    normal:'Please keep this secret and give no knowledge of it to any other person.',
+    trick:'secret 本身就在表里；「让某人知道」= give knowledge to someone。' },
+  { lv:3, cn:'我担心明天赶不上火车。', hint:['fear','train','before','get'],
+    basic:'I have a fear that the train will go before we get there.',
+    normal:"I am afraid we'll miss the train tomorrow.",
+    trick:'miss（错过）这层意思表里没有，改说「火车先我们而去」；be afraid 也说 have a fear。' }
+];
+
+/* SECTION: rules —— 十二条心法，每条带一句随堂小练 */
+const RULES = [
+  ['1','一个动作词顶十个动词','100 个操作词里有 make、do、get、give、take、put、have。配上名词，几乎任何动作都能拼出来。',
+   'make a move · get knowledge · give help · take an attempt',
+   { cn:'帮我看一下。', a:'Give me a look at it.', why:'look 在表里能当名词，give me a look 就是「让我看一眼」' }],
+  ['2','名词不够，描述来凑','没见过的名词，就说它的样子、用途或材料。不会说开瓶器，你说得出 a thing for opening bottles。',
+   'a thing for cutting · a place for resting',
+   { cn:'那是一把用来切的刀。', a:'That is a knife for cutting.', why:'for + 动名词说明用途，是最好用的一招' }],
+  ['3','所有格用 of，不用 my','the book of mine、the room of the school。of 是 850 里的万能胶。',
+   'the map of the town · a friend of mine',
+   { cn:'我姐姐的房间。', a:'The room of my sister.', why:'of 结构一说就懂，不用纠结撇号 s' }],
+  ['4','时态靠时间词，不背六种时态','过去用 yesterday、last week 点明；完成用 have + 过去分词；将来用 will。说清时间就够。',
+   'Yesterday I went there · I will go tomorrow',
+   { cn:'她昨天来了。', a:'Yesterday she came.', why:'把 yesterday 放句首，时态立刻明白' }],
+  ['5','难词拆成「轻动词 + 简单名词」','decide → make a decision；travel → make a journey；wonder → have a question in my mind。',
+   'make a decision · make a journey',
+   { cn:'他做了一个决定。', a:'He made a decision.', why:'decision 在表里，decide 反而不在' }],
+  ['6','说不清就换角度','同一意思最多试三种：换词、换角度（说用途）、换粗细（举例子）。能被听懂就是成功。',
+   '冰箱 → a box for keeping food cold',
+   { cn:'冰箱是什么？', a:'It is a box for keeping food cold.', why:'想不出名词就描述它做什么' }],
+  ['7','比较用 more 和 than','much + 比较级 + than，一个句式解决所有「比……更」。',
+   'much more than this · this is higher than that',
+   { cn:'这比那个难。', a:'This is harder than that.', why:'hard 在表里，加 er 就是比较级' }],
+  ['8','让事物做主语，少堆人称','The weather... / The house... / The price... 主语换成事物，句子反而更像英语。',
+   'The weather is wet · The price is little',
+   { cn:'这里的人很多。', a:'There is a great number of persons here.', why:'many 不在表里，「很多」说 a great number of + 名词' }],
+  ['9','一句话只说一件事','先说第一件，用 and 接第二件。长难句在 850 里是拆成短句说的。',
+   'It was wet, and we went back',
+   { cn:'他跑得很快，而且他没有累。', a:'He went with a quick step, and he was not tired.', why:'「步伐很快」= with a quick step，比 run quickly 更表内' }],
+  ['10','方位全靠那十几个介词','on in at up down over under from to with —— 配上名词能换出所有方位和状态。',
+   'on the table · under the tree · with no money',
+   { cn:'桌上有一本书。', a:'There is a book on the table.', why:'there is + 位置介词，是描述存在的万能句' }],
+  ['11','疑问句：把 be 提到前面','不会问就把句子改成「X 是什么」：What is the thing you have a need for?',
+   'Is it true? · What is the way out?',
+   { cn:'去车站的路是什么？', a:'What is the way to the train station?', why:'way 在表里，问路只要这一句' }],
+  ['12','情绪和想法用 have + 名词','have fear（害怕）、have love（喜爱）、have a doubt（怀疑）、have pleasure（高兴）。',
+   'I have fear of the dark · I have pleasure in it',
+   { cn:'我怕黑。', a:'I have fear of the dark.', why:'fear 和 dark 都在表里，be afraid of 反而超纲' }]
+];
+
+/* SECTION: dictionary —— kind: w=要换掉的实词, f=虚词可选说法 */
+/* kind: w=表外实词，需要拆掉 / f=虚词，可选说法 / k=表内词，常被误以为高级，直接用 */
+const DICT = [
+  ['want / wish','have a desire for · have a need for','want 不在 850 里，desire（渴望）在。说 I have a desire for a cup of water。','w'],
+  ['try','make an attempt','try 不在表里，attempt（尝试）在。说 Make an attempt。','w'],
+  ['big / large','great · wide · high · deep','表里没有 big。体积大用 great，面积大用 wide，位置高用 high，程度深用 deep。','w'],
+  ['people / children / kids','persons · men and women · young persons','表里没有 people 也没有 children。拆成能数得清的对象：persons、young persons。','w'],
+  ['assist','give help','assist 不在表里；help 反而在表里，直接用：Give me help。','w'],
+  ['understand','the sense is not clear','understand 不在表里。「明白」改成「意思不清楚」：The sense of this is not clear to me。','w'],
+  ['protect','keep ... clean · keep ... safe','protect 不在表里，用 keep：Keep the earth clean。','w'],
+  ['solve','give an answer','solve 不在表里，「解决问题」= give an answer to a question。','w'],
+  ['progress','growth · a step forward','progress 不在表里，growth（生长、增长）在。','w'],
+  ['without','with no','without 不在表里：with no money（没钱）、with no trouble（不费事）。','w'],
+  ['a lot / lots','much · more · most','这两个都不在表里。程度词单用 much 放句尾：I like music much。','w'],
+  ['because','for the reason that（也可以直接用 because）','because 本身就在 850 里，可以放心用；since 不在表里，需要换成 for the reason that。','k'],
+  ['important','就在表里，直接用','important 在 850 里，别绕远路：It is important。想换更朴素的说法也可以：It is of great value。','k'],
+  ['tall / tired / happy','就在表里，直接用','tall（高的）、tired（疲倦的）、happy（高兴的）全都在 850 的形容词组里，不用换说法。','k'],
+  ['drink','就在表里，直接用','drink 在表里（饮料；喝）。想更简单也可以用 have：I have water。','k'],
+  ['my / our / your / his / her','of mine · of yours · of that person','表里没有 my。所有格可换成 of + 名词：the book of mine。写作用 my 没问题，先学会 of 的说法能帮你摆脱依赖。','f'],
+  ['it / they / them','that · these · those · the + 名词','用 that（那件事）、those persons（那些人）代替，指代更明确，也更不容易听错。','f'],
+  ['can / could','be able to · was able to','能力说 I am able to go，过去的能力说 I was able to get the book。','f'],
+  ['must / have to','there is a need for','必要性说 There is a need for rest。','f'],
+  ['what / which','the thing that · the one that','疑问句改成「那件……的东西」：What is the thing you need?','f']
+];
+
+/* SECTION: use lab logic */
+function paintTokens(box, text){
+  box.textContent = '';
+  box.className = 'toks';
+  if (!text || !text.trim()) {
+    box.textContent = '你写的句子会在这里实时标色。';
+    return 0;
+  }
+  let outN = 0;
+  tokenize(text).forEach(function(tk){
+    if (tk === '' || tk === undefined) return;
+    if (/^\s+$/.test(tk) || /^[,.;:!?、。！？:;]+$/.test(tk)) {
+      box.appendChild(document.createTextNode(tk));
+      return;
+    }
+    const sp = document.createElement('span');
+    const kind = /^[0-9]+$/.test(tk) ? 'func' : classify(tk);
+    if (kind === 'in') sp.className = 'tok in';
+    else if (kind === 'func') sp.className = 'tok other';
+    else { sp.className = 'tok out'; outN++; }
+    sp.textContent = tk;
+    box.appendChild(sp);
+    box.appendChild(document.createTextNode(' '));
+  });
+  return outN;
 }
 
-/* SECTION: flashcards */
-const fc = { list: [], i: 0, cat: 'all' };
-function buildCardList(cat){
-  const base = (cat === 'all') ? WORDS.slice() : WORDS.filter(function(w){ return w.cat === cat; });
-  return base;
+function paintSentProgress(){
+  $('sent-progress').textContent = '已练 ' + sentSet.size + ' / ' + SENTENCES.length + ' 句（进度存在本机浏览器）';
 }
-function renderCardCat(){
-  const row = $('card-cat'); row.textContent = '';
-  [{ key:'all', name:'全组词表' }].concat(CATS.map(function(c){ return { key:c.key, name:c.name }; }))
-  .forEach(function(it){
-    const b = document.createElement('button');
-    b.className = 'pill' + (fc.cat === it.key ? ' on' : '');
-    b.textContent = it.name;
-    b.addEventListener('click', function(){
-      fc.cat = it.key; fc.list = buildCardList(it.key); fc.i = 0;
-      renderCardCat(); paintCard();
+
+function renderSentences(){
+  const list = $('sent-list'); list.textContent = '';
+  const lv = renderSentences._lv || 'all';
+  const items = SENTENCES.map(function(s, i){ return { s:s, no:i + 1 }; })
+    .filter(function(o){ return lv === 'all' || String(o.s.lv) === lv; });
+
+  items.forEach(function(o){
+    const s = o.s;
+    const card = document.createElement('div');
+    card.className = 'sent';
+
+    const head = document.createElement('div'); head.className = 'sent-head';
+    const badge = document.createElement('span');
+    badge.className = 'lv lv' + s.lv;
+    badge.textContent = s.lv === 1 ? '入门' : s.lv === 2 ? '进阶' : '挑战';
+    const no = document.createElement('span'); no.className = 'sent-no'; no.textContent = '第 ' + o.no + ' 句';
+    head.append(badge, no);
+
+    const cn = document.createElement('div'); cn.className = 'sent-cn'; cn.textContent = s.cn;
+
+    const chips = document.createElement('div'); chips.className = 'chips';
+    const lab = document.createElement('span'); lab.textContent = '提示词：';
+    chips.appendChild(lab);
+    s.hint.forEach(function(h){
+      const b = document.createElement('button');
+      b.textContent = h;
+      b.addEventListener('click', function(){ speak(h); });
+      chips.appendChild(b);
     });
-    row.appendChild(b);
+
+    const area = document.createElement('textarea');
+    area.className = 'type-area';
+    area.placeholder = '用英文说说这句中文……（先写，别怕错）';
+
+    const toks = document.createElement('div');
+    toks.className = 'toks';
+    toks.textContent = '你写的句子会在这里实时标色。';
+
+    const reveal = document.createElement('div');
+    reveal.className = 'reveal';
+    reveal.style.display = 'none';
+
+    const vb = document.createElement('div'); vb.className = 'ver ver-basic';
+    const vbt = document.createElement('span'); vbt.className = 'tag'; vbt.textContent = '850 词的说法';
+    const vbl = document.createElement('div'); vbl.className = 'line'; vbl.textContent = s.basic;
+    const vbs = document.createElement('div'); vbs.className = 'say';
+    const vbb = document.createElement('button'); vbb.className = 'mini'; vbb.textContent = '🔊 朗读这句';
+    vbb.addEventListener('click', function(){ speak(s.basic); });
+    vbs.appendChild(vbb);
+    vb.append(vbt, vbl, vbs);
+
+    const vn = document.createElement('div'); vn.className = 'ver ver-normal';
+    const vnt = document.createElement('span'); vnt.className = 'tag'; vnt.textContent = '普通英语（课本会这么写）';
+    const vnl = document.createElement('div'); vnl.className = 'line'; vnl.textContent = s.normal;
+    const vns = document.createElement('div'); vns.className = 'say';
+    const vnb = document.createElement('button'); vnb.className = 'mini'; vnb.textContent = '🔊 朗读这句';
+    vnb.addEventListener('click', function(){ speak(s.normal); });
+    vns.appendChild(vnb);
+    vn.append(vnt, vnl, vns);
+
+    const tk = document.createElement('div'); tk.className = 'trick';
+    const tkb = document.createElement('b'); tkb.textContent = '差别在哪：';
+    tk.append(tkb, document.createTextNode(s.trick));
+
+    const doneBtn = document.createElement('button');
+    doneBtn.className = 'mini';
+    function paintDone(){
+      doneBtn.textContent = sentSet.has(String(o.no)) ? '✓ 这句已练过' : '标记这句已练过';
+    }
+    paintDone();
+    doneBtn.addEventListener('click', function(){
+      const k = String(o.no);
+      if (sentSet.has(k)) sentSet.delete(k); else sentSet.add(k);
+      saveSet(LS.sent, sentSet);
+      paintDone();
+      paintSentProgress();
+    });
+
+    reveal.append(vb, vn, tk, doneBtn);
+
+    const acts = document.createElement('div'); acts.className = 'sent-acts';
+    const show = document.createElement('button');
+    show.className = 'btn'; show.textContent = '看 850 词版答案';
+    const sayMine = document.createElement('button');
+    sayMine.className = 'mini'; sayMine.textContent = '🔊 朗读我写的';
+    acts.append(show, sayMine);
+
+    area.addEventListener('input', function(){ paintTokens(toks, area.value); });
+    show.addEventListener('click', function(){
+      const outN = paintTokens(toks, area.value);
+      const open = reveal.style.display === 'none';
+      reveal.style.display = open ? 'grid' : 'none';
+      show.textContent = open ? '收起答案' : '看 850 词版答案';
+      if (open) {
+        if (!area.value.trim()) toast('先写一句，再看答案收获更大');
+        else if (outN) toast('有 ' + outN + ' 个词在表外，对照答案换掉它');
+        speak(s.basic);
+      }
+    });
+    sayMine.addEventListener('click', function(){
+      if (!area.value.trim()) { toast('先写一句'); return; }
+      speak(area.value.trim());
+    });
+
+    card.append(head, cn, chips, area, toks, acts, reveal);
+    list.appendChild(card);
+  });
+  paintSentProgress();
+}
+$('lv-row').addEventListener('click', function(e){
+  const b = e.target.closest('.pill'); if (!b) return;
+  document.querySelectorAll('#lv-row .pill').forEach(function(x){ x.classList.remove('on'); });
+  b.classList.add('on');
+  renderSentences._lv = b.dataset.lv;
+  renderSentences();
+});
+
+function renderRules(){
+  const box = $('rule-cards'); box.textContent = '';
+  RULES.forEach(function(r){
+    const c = document.createElement('div'); c.className = 'card';
+    const n = document.createElement('div'); n.className = 'num'; n.textContent = r[0];
+    const h = document.createElement('h4'); h.textContent = r[1];
+    const p = document.createElement('p'); p.textContent = r[2];
+    c.append(n, h, p);
+    if (r[3]) {
+      const ex = document.createElement('div'); ex.className = 'ex'; ex.textContent = r[3];
+      c.appendChild(ex);
+    }
+    if (r[4]) {
+      const d = document.createElement('div'); d.className = 'drill';
+      const q = document.createElement('div'); q.className = 'q'; q.textContent = '小练：' + r[4].cn;
+      const ans = document.createElement('button');
+      ans.className = 'mini'; ans.textContent = '看说法';
+      const a = document.createElement('div'); a.className = 'a'; a.textContent = r[4].a;
+      a.style.display = 'none';
+      const why = document.createElement('div'); why.className = 'why'; why.textContent = r[4].why;
+      why.style.display = 'none';
+      ans.addEventListener('click', function(){
+        const open = a.style.display === 'none';
+        a.style.display = open ? 'block' : 'none';
+        why.style.display = open ? 'block' : 'none';
+        ans.textContent = open ? '🔊 再听一遍' : '看说法';
+        if (open) speak(r[4].a);
+      });
+      d.append(q, ans, a, why);
+      c.appendChild(d);
+    }
+    box.appendChild(c);
   });
 }
-function paintCard(){
-  const w = fc.list[fc.i];
-  const box = $('fc'); box.classList.remove('flip');
-  if (!w) {
-    $('fc-en').textContent = '—'; $('fc-zh').textContent = '这里还没有词';
-    $('fc-pos').textContent = '第 0 / 0 张'; $('fc-meta').textContent = '';
-    return;
-  }
-  $('fc-en').textContent = w.w;
-  $('fc-zh').textContent = w.m;
-  $('fc-meta').textContent = w.catName + ' · 第 ' + w.no + ' 号';
-  $('fc-pos').textContent = '第 ' + (fc.i + 1) + ' / ' + fc.list.length + ' 张';
-  $('fc-group').textContent = (fc.cat === 'all') ? '全组词表' : catByKey(fc.cat).name;
+
+function renderDict(){
+  const q = $('dict-q').value.trim().toLowerCase();
+  const box = $('dict-rows'); box.textContent = '';
+  const view = DICT.filter(function(row){
+    if (!q) return true;
+    return (row[0] + ' ' + row[1] + ' ' + row[2]).toLowerCase().indexOf(q) >= 0;
+  });
+  view.forEach(function(row){
+    const b = document.createElement('button');
+    b.className = 'dict';
+    const kind = document.createElement('span');
+    kind.className = 'kind ' + row[3];
+    kind.textContent = row[3] === 'w' ? '要换掉的实词' : (row[3] === 'k' ? '就在表里·直接用' : '虚词·可选说法');
+    const hard = document.createElement('div'); hard.className = 'hard'; hard.textContent = row[0];
+    const eq = document.createElement('div'); eq.className = 'eq'; eq.textContent = '850 词的说法';
+    const easy = document.createElement('div'); easy.className = 'easy'; easy.textContent = row[1];
+    const cn = document.createElement('div'); cn.className = 'cn'; cn.textContent = row[2];
+    b.append(kind, hard, eq, easy, cn);
+    b.addEventListener('click', function(){ speak(row[1].split('·')[0].trim()); });
+    box.appendChild(b);
+  });
+  $('dict-empty').style.display = view.length ? 'none' : 'block';
 }
-function fcMove(step){
-  if (!fc.list.length) return;
-  fc.i = (fc.i + step + fc.list.length) % fc.list.length;
-  paintCard();
-}
-function shuffleCards(){
-  for (let i = fc.list.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const t = fc.list[i]; fc.list[i] = fc.list[j]; fc.list[j] = t;
-  }
-  fc.i = 0; paintCard(); toast('顺序已打乱');
-}
-$('fc').addEventListener('click', function(e){
-  if (e.target.id === 'fc-say') return;
-  $('fc').classList.toggle('flip');
-});
-$('fc-say').addEventListener('click', function(){ if (fc.list[fc.i]) speak(fc.list[fc.i].w); });
-$('fc-know').addEventListener('click', function(){
-  const w = fc.list[fc.i]; if (!w) return;
-  doneSet.add(w.w); noteSet.delete(w.w);
-  saveSet(LS.done, doneSet); saveSet(LS.note, noteSet);
-  refreshStats(); fcMove(1);
-});
-$('fc-unknow').addEventListener('click', function(){
-  const w = fc.list[fc.i]; if (!w) return;
-  noteSet.add(w.w); doneSet.delete(w.w);
-  saveSet(LS.done, doneSet); saveSet(LS.note, noteSet);
-  refreshStats(); fcMove(1);
-});
-$('fc-prev').addEventListener('click', function(){ fcMove(-1); });
-$('fc-next2').addEventListener('click', function(){ fcMove(1); });
-$('fc-shuffle').addEventListener('click', shuffleCards);
-document.addEventListener('keydown', function(e){
-  if (!$('p-cards').classList.contains('on')) return;
-  const tag = (document.activeElement && document.activeElement.tagName) || '';
-  if (tag === 'INPUT') return;
-  if (e.code === 'Space') { e.preventDefault(); $('fc').classList.toggle('flip'); }
-  if (e.code === 'ArrowRight') fcMove(1);
-  if (e.code === 'ArrowLeft') fcMove(-1);
+$('dict-q').addEventListener('input', renderDict);
+
+$('use-tabs').addEventListener('click', function(e){
+  const b = e.target.closest('.sub-tab'); if (!b) return;
+  document.querySelectorAll('#use-tabs .sub-tab').forEach(function(x){ x.classList.remove('on'); });
+  b.classList.add('on');
+  document.querySelectorAll('.use-panel').forEach(function(x){ x.classList.toggle('on', x.id === b.dataset.u); });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 /* SECTION: quiz */
@@ -778,7 +1125,7 @@ function renderQuizCat(){
     b.textContent = it.name;
     b.addEventListener('click', function(){
       qz.cat = it.key;
-      row.querySelectorAll('.pill').forEach(function(x){ x.classList.remove('on'); });
+      document.querySelectorAll('#quiz-cat .pill').forEach(function(x){ x.classList.remove('on'); });
       b.classList.add('on');
     });
     row.appendChild(b);
@@ -795,17 +1142,13 @@ function pick(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
 function makeQuiz(){
   const pool = (qz.cat === 'all') ? WORDS : WORDS.filter(function(w){ return w.cat === qz.cat; });
   if (pool.length < 5) return [];
-  const shuffled = pool.slice();
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const t = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = t;
-  }
+  const shuffled = shuffleArr(pool);
   const items = [];
   for (let i = 0; i < Math.min(10, shuffled.length); i++) {
     const stem = shuffled[i];
     const distract = [];
     let guard = 0;
-    while (distract.length < 3 && guard < 200) {
+    while (distract.length < 3 && guard < 300) {
       guard++;
       const cand = pick(WORDS);
       const val = qz.mode === 'en2zh' ? cand.m : cand.w;
@@ -850,8 +1193,6 @@ function answer(btn, val, it){
   });
   if (!right) btn.classList.add('wrong'); else qz.score++;
   qz.log.push({ word: it.word, right: right, picked: val });
-  if (!right) { noteSet.add(it.word.w); saveSet(LS.note, noteSet); }
-  refreshStats();
   setTimeout(function(){
     qz.i++;
     if (qz.i >= qz.items.length) endQuiz(); else paintQuiz();
@@ -864,14 +1205,13 @@ function endQuiz(){
   $('r-score').textContent = qz.score + ' / ' + n;
   const pct = qz.score / n;
   $('r-grade').textContent = pct === 1 ? '满！这组词已经是你的了。'
-    : pct >= .8 ? '很棒，把错掉的几个再刷一遍就满分了。'
-    : pct >= .6 ? '一半以上没问题，回到闪卡把不熟的过一遍。'
-    : '别急，这组词先回词库读熟，明天再来一次。';
-  let best = 0;
-  try { best = parseInt(localStorage.getItem(LS.best) || '0', 10) || 0; } catch(e){}
-  if (qz.score > best) { try { localStorage.setItem(LS.best, String(qz.score)); } catch(e){} }
-  refreshStats();
-
+    : pct >= .8 ? '很棒，把错掉的几个回闪卡刷一遍就满分了。'
+    : pct >= .6 ? '一半以上没问题，回闪卡把不熟的过一遍。'
+    : '别急，这组先回闪卡读熟，明天再来一次。';
+  try {
+    const best = parseInt(localStorage.getItem(LS.best) || '0', 10) || 0;
+    if (qz.score > best) localStorage.setItem(LS.best, String(qz.score));
+  } catch(e){}
   const rv = $('r-review'); rv.textContent = '';
   qz.log.forEach(function(l){
     const row = document.createElement('div'); row.className = 'rv';
@@ -882,7 +1222,7 @@ function endQuiz(){
     const b = document.createElement('b'); b.textContent = l.word.w + ' — ' + l.word.m;
     const s = document.createElement('div');
     s.style.color = 'var(--ink-soft)'; s.style.fontSize = '13px';
-    s.textContent = l.right ? '答对了' : '你选了「' + l.picked + '」，已放进生词本';
+    s.textContent = l.right ? '答对了' : '你选了「' + l.picked + '」';
     body.append(b, s);
     row.append(mk, body);
     rv.appendChild(row);
@@ -890,46 +1230,25 @@ function endQuiz(){
 }
 $('quiz-go').addEventListener('click', startQuiz);
 $('r-again').addEventListener('click', startQuiz);
-$('r-note').addEventListener('click', function(){ go('note'); });
+$('r-cards').addEventListener('click', function(){ go('cards'); });
 $('q-skip').addEventListener('click', function(){
   const it = qz.items[qz.i];
   qz.log.push({ word: it.word, right: false, picked: '（跳过）' });
-  noteSet.add(it.word.w); saveSet(LS.note, noteSet); refreshStats();
   qz.i++;
   if (qz.i >= qz.items.length) endQuiz(); else paintQuiz();
 });
 
-/* SECTION: notebook */
-function renderNote(){
-  const list = WORDS.filter(function(w){ return noteSet.has(w.w); });
-  const grid = $('note-grid'); grid.textContent = '';
-  list.forEach(function(w){ grid.appendChild(wordCard(w)); });
-  $('note-hint').textContent = '共 ' + list.length + ' 个生词';
-  $('note-empty').style.display = list.length ? 'none' : 'block';
-}
-$('note-clear').addEventListener('click', function(){
-  if (!noteSet.size) { toast('生词本已经是空的'); return; }
-  noteSet.clear(); saveSet(LS.note, noteSet); refreshStats(); renderNote(); renderWords();
-  toast('生词本已清空');
-});
-$('note-practice').addEventListener('click', function(){
-  const list = WORDS.filter(function(w){ return noteSet.has(w.w); });
-  if (list.length < 2) { toast('生词本至少要有 2 个词才能练'); return; }
-  fc.cat = 'note'; fc.list = list.slice(); fc.i = 0;
-  renderCardCat(); paintCard(); go('cards');
-  $('fc-group').textContent = '只练生词本（' + list.length + ' 个）';
-  toast('已进入生词本闪卡练习');
-});
-
 /* SECTION: init */
-renderHome();
+renderStrip();
+renderCardCat();
+fc.list = buildDeck('all');
+paintCard();
 renderFilters();
 renderWords();
-renderCardCat();
-fc.list = buildCardList('all');
-paintCard();
+renderSentences();
+renderRules();
+renderDict();
 renderQuizCat();
-renderNote();
 </script>
 </body>
 </html>
