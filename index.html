@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>850 基础英语单词 · Basic English 学习站</title>
+<meta name="description" content="奥格登 850 Basic English 核心词表的学习网站，适合 10-15 岁学生：分类词库、闪卡、测验、生词本，可离线在浏览器使用。">
+<style>
+/* SECTION: reset */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+:root{
+  --bg:#f4f7fb;
+  --ink:#16233a;
+  --ink-soft:#5a6b85;
+  --line:#e2e8f2;
+  --card:#ffffff;
+  --brand:#2f6df6;
+  --brand-soft:#e8f0ff;
+  --c-ops:#2f6df6;
+  --c-pic:#12a37a;
+  --c-gen:#e8801f;
+  --c-qua:#9055e0;
+  --c-opp:#e0455f;
+  --ok:#12a37a;
+  --shadow:0 1px 2px rgba(22,35,58,.05),0 8px 24px rgba(22,35,58,.06);
+  --r:16px;
+}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Segoe UI",system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg,canvas{max-width:100%;height:auto}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+a{color:var(--brand);text-decoration:none}
+
+/* SECTION: header */
+.site-head{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{
+  max-width:1120px;margin:0 auto;padding:10px 16px;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+.logo-badge{
+  width:38px;height:38px;border-radius:12px;flex:0 0 auto;
+  background:linear-gradient(135deg,#2f6df6,#12a37a);
+  color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;
+}
+.logo-text small{display:block;font-size:11px;font-weight:600;color:var(--ink-soft);letter-spacing:1px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.tab{
+  padding:9px 13px;border-radius:999px;font-size:14px;font-weight:600;
+  color:var(--ink-soft);white-space:nowrap;min-height:40px;
+  display:inline-flex;align-items:center;
+}
+.tab:hover{background:var(--brand-soft);color:var(--brand)}
+.tab.on{background:var(--brand);color:#fff}
+
+/* SECTION: layout */
+.wrap{max-width:1120px;margin:0 auto;padding:20px 16px 64px}
+.panel{display:none}
+.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}
+.grid{display:grid;gap:14px}
+.g-auto{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.sec-title{font-size:20px;margin:0 0 4px;font-weight:800}
+.sec-sub{margin:0 0 14px;color:var(--ink-soft);font-size:14px}
+.mt{margin-top:16px}
+
+/* SECTION: hero */
+.hero{
+  background:linear-gradient(135deg,#204a9c,#2f6df6 45%,#12a37a);
+  color:#fff;border-radius:22px;padding:26px 22px;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;right:-70px;top:-70px;width:230px;height:230px;border-radius:50%;
+  background:rgba(255,255,255,.12)
+}
+.hero h1{margin:0 0 8px;font-size:clamp(22px,4.5vw,34px);line-height:1.25;position:relative}
+.hero p{margin:0;max-width:62ch;position:relative;opacity:.95}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;position:relative}
+.chip{
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  padding:6px 11px;border-radius:999px;font-size:13px;font-weight:600
+}
+.stat-row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.stat b{display:block;font-size:26px;line-height:1.2}
+.stat span{font-size:13px;color:var(--ink-soft)}
+.bar{height:10px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#2f6df6,#12a37a);width:0;transition:width .4s ease}
+
+/* SECTION: category cards */
+.cat-card{text-align:left;display:flex;flex-direction:column;gap:6px;border-top:4px solid var(--accent,var(--brand));transition:transform .15s ease}
+.cat-card:hover{transform:translateY(-2px)}
+.cat-card .n{font-size:28px;font-weight:800;color:var(--accent,var(--brand))}
+.cat-card h3{margin:0;font-size:16px}
+.cat-card p{margin:0;font-size:13px;color:var(--ink-soft)}
+.cat-card .eg{font-size:12px;color:var(--ink-soft);background:#f7f9fc;border-radius:8px;padding:6px 8px;margin-top:4px}
+
+/* SECTION: toolbar */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.field{
+  flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px
+}
+.field input{border:none;outline:none;background:none;width:100%;font-size:16px}
+.field svg{flex:0 0 auto;opacity:.55}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap}
+.pill{
+  padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700;
+  background:#fff;border:1px solid var(--line);color:var(--ink-soft);min-height:38px
+}
+.pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.alpha{display:flex;gap:5px;flex-wrap:wrap}
+.alpha button{
+  width:34px;height:34px;border-radius:9px;font-size:13px;font-weight:700;
+  background:#fff;border:1px solid var(--line);color:var(--ink-soft)
+}
+.alpha button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.alpha button:disabled{opacity:.3;cursor:not-allowed}
+.hint{font-size:13px;color:var(--ink-soft)}
+
+/* SECTION: word list */
+.word-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(232px,1fr))}
+.wcard{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 13px;
+  display:flex;flex-direction:column;gap:3px;position:relative;box-shadow:var(--shadow)
+}
+.wcard.done{border-color:#b8e5d5;background:#f3fbf7}
+.wcard .w{font-size:19px;font-weight:800;letter-spacing:.2px;display:flex;align-items:center;gap:8px;min-width:0}
+.wcard .w span{overflow-wrap:anywhere}
+.wcard .pos{font-size:11px;font-weight:700;color:#fff;background:var(--accent,var(--brand));padding:2px 7px;border-radius:6px;flex:0 0 auto}
+.wcard .m{font-size:14px;color:var(--ink-soft);overflow-wrap:anywhere}
+.wcard .idx{position:absolute;right:11px;top:11px;font-size:11px;color:#a9b6c9}
+.wcard .acts{display:flex;gap:6px;margin-top:8px}
+.mini{
+  font-size:12px;font-weight:700;padding:6px 9px;border-radius:8px;
+  border:1px solid var(--line);background:#fff;color:var(--ink-soft);min-height:34px
+}
+.mini:hover{border-color:var(--brand);color:var(--brand)}
+.mini.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.pager{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.btn{
+  padding:11px 18px;border-radius:11px;font-weight:700;font-size:15px;
+  background:var(--brand);color:#fff;min-height:44px
+}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.ok{background:var(--ok)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.empty{padding:36px 16px;text-align:center;color:var(--ink-soft)}
+
+/* SECTION: flashcard */
+.fc-stage{max-width:560px;margin:0 auto}
+.fc{
+  perspective:1200px;height:280px;cursor:pointer
+}
+.fc-in{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px;text-align:center
+}
+.fc-back{transform:rotateY(180deg);background:linear-gradient(160deg,#f7faff,#eef7f2)}
+.fc-face .lab{font-size:12px;font-weight:700;letter-spacing:1.4px;color:var(--ink-soft)}
+.fc-face .big{font-size:clamp(30px,7vw,46px);font-weight:800;overflow-wrap:anywhere}
+.fc-face .mid{font-size:clamp(20px,4.5vw,28px);font-weight:700;overflow-wrap:anywhere}
+.fc-face .sub{font-size:14px;color:var(--ink-soft)}
+.fc-count{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-soft);margin:12px 2px}
+.fc-acts{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:12px}
+.fc-acts .btn{width:100%}
+
+/* SECTION: quiz */
+.q-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft);margin-bottom:10px}
+.q-word{font-size:clamp(28px,6vw,40px);font-weight:800;text-align:center;margin:10px 0 2px}
+.q-ask{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:16px}
+.opt-list{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.opt{
+  text-align:left;padding:14px 15px;border-radius:13px;border:1px solid var(--line);
+  background:#fff;font-size:16px;font-weight:600;min-height:52px;overflow-wrap:anywhere
+}
+.opt:hover:not(:disabled){border-color:var(--brand);background:var(--brand-soft)}
+.opt.right{border-color:var(--ok);background:#eafaf3;color:#0b6b4f}
+.opt.wrong{border-color:#e0455f;background:#fdeef1;color:#98243a}
+.opt:disabled{cursor:default}
+.result{text-align:center}
+.result .score{font-size:52px;font-weight:800;line-height:1.1}
+.result .grade{font-size:16px;color:var(--ink-soft);margin-top:6px}
+.review{display:grid;gap:8px;margin-top:16px;text-align:left}
+.rv{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:14px}
+.rv b{overflow-wrap:anywhere}
+.rv .mk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:#fff;font-weight:800}
+.rv .mk.y{background:var(--ok)}
+.rv .mk.n{background:#e0455f}
+
+/* SECTION: steps */
+.steps{counter-reset:s;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.steps li{
+  counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px 14px 54px;position:relative
+}
+.steps li::before{
+  content:counter(s);position:absolute;left:14px;top:14px;width:28px;height:28px;border-radius:50%;
+  background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px
+}
+.steps li b{display:block;margin-bottom:2px}
+code{
+  background:#eef2f9;border:1px solid var(--line);border-radius:6px;padding:1px 6px;
+  font-family:ui-monospace,Consolas,Menlo,monospace;font-size:13px;overflow-wrap:anywhere
+}
+details.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 15px;margin-top:12px}
+details.box summary{font-weight:700;cursor:pointer;min-height:32px}
+details.box p{margin:10px 0 0}
+.callout{border-left:4px solid var(--gen);background:#fff8ef;padding:12px 14px;border-radius:0 12px 12px 0;font-size:14px}
+
+/* SECTION: footer */
+.foot{max-width:1120px;margin:0 auto;padding:0 16px 40px;color:var(--ink-soft);font-size:13px}
+.foot p{margin:6px 0}
+
+/* SECTION: toast */
+.toast{
+  position:fixed;left:50%;bottom:22px;transform:translate(-50%,16px);
+  background:#16233a;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;
+  opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:90vw;text-align:center
+}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:600px){
+  .head-inner{padding:9px 12px}
+  .tabs{margin-left:0;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .wrap{padding:16px 12px 48px}
+  .fc{height:250px}
+}
+</style>
+</head>
+<body>
+
+<!-- SECTION: header markup -->
+<header class="site-head">
+  <div class="head-inner">
+    <div class="logo">
+      <div class="logo-badge">850</div>
+      <div class="logo-text">基础英语单词<small>BASIC ENGLISH</small></div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button class="tab on" data-go="home">首页</button>
+      <button class="tab" data-go="words">词库</button>
+      <button class="tab" data-go="cards">闪卡</button>
+      <button class="tab" data-go="quiz">闯关测验</button>
+      <button class="tab" data-go="note">生词本</button>
+      <button class="tab" data-go="deploy">怎么发布</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- SECTION: panel home -->
+  <section class="panel on" id="p-home">
+    <div class="hero">
+      <h1>只背 850 个词，就能说英语</h1>
+      <p>1930 年，英国语言学家查尔斯·奥格登（C. K. Ogden）从英语里挑出 850 个最核心的词，命名为 Basic English。它们像一套「积木」：用这 850 块积木，可以搭出日常生活里绝大部分的表达。这个网站帮你一块一块把它们认全。</p>
+      <div class="hero-tags">
+        <span class="chip">100 个动作词</span>
+        <span class="chip">200 个画得出来的东西</span>
+        <span class="chip">400 个常用名词</span>
+        <span class="chip">150 个形容词</span>
+        <span class="chip">可离线使用</span>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><b id="s-total">850</b><span>词表总词数</span></div>
+      <div class="stat"><b id="s-done">0</b><span>我标记「已掌握」</span><div class="bar"><i id="s-bar"></i></div></div>
+      <div class="stat"><b id="s-note">0</b><span>生词本里的词</span></div>
+      <div class="stat"><b id="s-best">—</b><span>测验最好成绩</span></div>
+    </div>
+
+    <h2 class="sec-title mt">五组词，分开学</h2>
+    <p class="sec-sub">点一张卡片，就能直接进入这一组的词库。</p>
+    <div class="grid g-auto" id="cat-cards"></div>
+
+    <div class="card mt">
+      <h2 class="sec-title">三步学习法</h2>
+      <ol class="steps">
+        <li><b>先扫一遍</b>在「词库」里挑一组，从 A 到 Z 浏览，遇到认识的点「已掌握」，不确定的点「生词本」。点喇叭图标可以听发音。</li>
+        <li><b>再刷闪卡</b>在「闪卡」里翻卡片，先想中文再翻面。答对了点「记住了」，答错点「还不熟」，它会自动进生词本。</li>
+        <li><b>最后闯关</b>在「闯关测验」里做 10 道题检验自己，看分数和错题解析，把错词收进生词本再回去刷。</li>
+      </ol>
+      <p class="callout mt">小提示：850 个词看着多，其实每天 15 个，两个月就能过完一轮。别贪多，能说出例句才算真的会。</p>
+    </div>
+  </section>
+
+  <!-- SECTION: panel words -->
+  <section class="panel" id="p-words">
+    <h2 class="sec-title">全部 850 词</h2>
+    <p class="sec-sub">可以按分组、首字母筛选，也可以直接搜英文或中文。</p>
+    <div class="toolbar">
+      <label class="field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="q" type="search" placeholder="搜单词或中文意思，比如 water / 水" autocomplete="off">
+      </label>
+      <button class="pill" id="only-new">只看没掌握的</button>
+    </div>
+    <div class="pill-row" id="cat-filter"></div>
+    <div class="alpha mt" id="alpha"></div>
+    <div class="toolbar mt">
+      <span class="hint" id="count-hint">共 850 个词</span>
+    </div>
+    <div class="word-grid" id="word-grid"></div>
+    <div class="pager">
+      <button class="btn ghost" id="prev">上一页</button>
+      <span class="hint" id="page-hint">1 / 1</span>
+      <button class="btn ghost" id="next">下一页</button>
+    </div>
+  </section>
+
+  <!-- SECTION: panel cards -->
+  <section class="panel" id="p-cards">
+    <h2 class="sec-title">闪卡速记</h2>
+    <p class="sec-sub">先想中文意思，再点卡片翻面。系统会记住你每张卡的情况。</p>
+    <div class="fc-stage">
+      <div class="pill-row" id="card-cat" style="justify-content:center"></div>
+      <div class="fc mt" id="fc">
+        <div class="fc-in">
+          <div class="fc-face">
+            <div class="lab">ENGLISH</div>
+            <div class="big" id="fc-en">apple</div>
+            <div class="sub">点卡片翻面 · 也可以按空格键</div>
+            <button class="mini" id="fc-say">🔊 发音</button>
+          </div>
+          <div class="fc-face fc-back">
+            <div class="lab">中文意思</div>
+            <div class="mid" id="fc-zh">苹果</div>
+            <div class="sub" id="fc-meta">分组</div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-count">
+        <span id="fc-pos">第 1 / 0 张</span>
+        <span id="fc-group">全组词表</span>
+      </div>
+      <div class="fc-acts">
+        <button class="btn ok" id="fc-know">记住了</button>
+        <button class="btn ghost" id="fc-unknow">还不熟</button>
+      </div>
+      <div class="pager">
+        <button class="btn ghost" id="fc-prev">← 上一张</button>
+        <button class="btn ghost" id="fc-shuffle">打乱顺序</button>
+        <button class="btn ghost" id="fc-next2">下一张 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: panel quiz -->
+  <section class="panel" id="p-quiz">
+    <h2 class="sec-title">闯关测验</h2>
+    <p class="sec-sub">每关 10 题，四选一。答错的正确会自动收进生词本。</p>
+    <div class="pill-row" id="quiz-mode" style="justify-content:center">
+      <button class="pill on" data-mode="en2zh">看英文选中文</button>
+      <button class="pill" data-mode="zh2en">看中文选英文</button>
+    </div>
+    <div class="card mt" id="quiz-box">
+      <div id="quiz-start">
+        <p>选择题来自 850 词表本身，出题范围可以选：只考某个分组，或者全组词表混着考。</p>
+        <div class="pill-row mt" id="quiz-cat"></div>
+        <div class="pager"><button class="btn" id="quiz-go">开始第 1 关</button></div>
+      </div>
+      <div id="quiz-run" style="display:none">
+        <div class="q-head"><span id="q-step">第 1 / 10 题</span><span id="q-score">得分 0</span></div>
+        <div class="bar"><i id="q-bar"></i></div>
+        <div class="q-word" id="q-stem">apple</div>
+        <div class="q-ask" id="q-ask">选出正确的中文意思</div>
+        <div class="opt-list" id="q-opts"></div>
+        <div class="pager"><button class="btn ghost" id="q-skip">跳过这题</button></div>
+      </div>
+      <div id="quiz-end" style="display:none">
+        <div class="result">
+          <div class="score" id="r-score">0 / 10</div>
+          <div class="grade" id="r-grade"></div>
+          <div class="pager">
+            <button class="btn" id="r-again">再来一关</button>
+            <button class="btn ghost" id="r-note">查看生词本</button>
+          </div>
+        </div>
+        <div class="review" id="r-review"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: panel note -->
+  <section class="panel" id="p-note">
+    <h2 class="sec-title">我的生词本</h2>
+    <p class="sec-sub">这里收集你在词库、闪卡或测验里标记为「还不熟」的词，全部保存在你自己这台设备上。</p>
+    <div class="toolbar">
+      <span class="hint" id="note-hint">共 0 个生词</span>
+      <button class="mini" id="note-clear">清空生词本</button>
+      <button class="mini" id="note-practice">只练这些生词</button>
+    </div>
+    <div class="word-grid" id="note-grid"></div>
+    <div class="empty" id="note-empty">还没有生词。去词库或闪卡里点「生词本」，词就会出现在这里。</div>
+  </section>
+
+  <!-- SECTION: panel deploy -->
+  <section class="panel" id="p-deploy">
+    <h2 class="sec-title">怎么把这个网站放到网上</h2>
+    <p class="sec-sub">这个页面是单文件静态网站，不需要服务器，最适合用 GitHub Pages 发布。下面是给自己练习用的最短流程。</p>
+
+    <div class="card">
+      <h3 class="sec-title">路线一：网页拖拽上传（最简单，5 分钟）</h3>
+      <ol class="steps">
+        <li><b>注册并新建仓库</b>登录 GitHub，点右上角 <code>+</code> → <code>New repository</code>，仓库名随便取（例如 <code>850-words</code>），可见性选 <code>Public</code>，点 <code>Create repository</code>。</li>
+        <li><b>改文件名</b>把本文件重命名为 <code>index.html</code>。GitHub Pages 会自动把这个文件当作网站首页。</li>
+        <li><b>上传</b>在仓库页面点 <code>add file</code> → <code>Upload files</code>，把 <code>index.html</code> 拖进去，再点 <code>Commit changes</code>。</li>
+        <li><b>打开 Pages</b>仓库里点 <code>Settings</code> → 左侧 <code>Pages</code> → <code>Branch</code> 选 <code>main</code>、文件夹选 <code>根目录 /</code> → <code>Save</code>。</li>
+        <li><b>访问</b>等一两分钟刷新，页面顶部会给出地址，形如 <code>https://你的用户名.github.io/850-words/</code>。把这个地址发给同学就能打开。</li>
+      </ol>
+    </div>
+
+    <div class="card mt">
+      <h3 class="sec-title">路线二：用 Git 命令行（练习真正的提交流程）</h3>
+      <ol class="steps">
+        <li><b>准备目录</b>新建一个空文件夹，把 <code>index.html</code> 放进去，在该目录里执行 <code>git init</code>。</li>
+        <li><b>提交</b>依次执行 <code>git add index.html</code> 和 <code>git commit -m "first page"</code>。</li>
+        <li><b>关联仓库</b>在 GitHub 上先建好空仓库，然后执行 <code>git remote add origin 仓库地址</code>，再 <code>git push -u origin main</code>（分支名以你仓库实际的为准）。</li>
+        <li><b>开启 Pages</b>和路线一第 5 步一样：<code>Settings</code> → <code>Pages</code> → 选分支 → <code>Save</code>。</li>
+      </ol>
+      <p class="callout mt">改内容之后怎么办？改完本地文件，再走一遍 <code>git add</code> → <code>git commit</code> → <code>git push</code>；网页地址不变，浏览器可能需要按 Ctrl+F5 强制刷新才能看到新版。</p>
+    </div>
+
+    <details class="box">
+      <summary>常见问题</summary>
+      <p><b>打开是 404？</b>多半是文件名不对——必须是 <code>index.html</code>（全小写），而且要放在仓库根目录或 Pages 指定的文件夹里。</p>
+      <p><b>地址里少了后半截？</b>仓库名会出现在网址路径里，形如 <code>/仓库名/</code>，完整地址以 <code>Settings → Pages</code> 页面显示的为准。</p>
+      <p><b>改了没变化？</b>GitHub Pages 发布有 1～2 分钟延迟，另外浏览器会缓存，强制刷新即可。</p>
+      <p><b>会不会很贵？</b>公开仓库的 GitHub Pages 免费额度对这种纯静态页面完全够用。</p>
+    </details>
+
+    <div class="card mt">
+      <h3 class="sec-title">关于这份词表</h3>
+      <p style="margin:0">词表内容为 C. K. Ogden《Basic English》（1930）公布的 850 词及其分组（Operations 100 / Picturable Things 200 / General Things 400 / Qualities General 100 / Qualities Opposites 50），属公开领域的历史词表。中文释义为便于中国学生理解而写的常用义项，一词在不同语境下可能有别的译法。发音使用浏览器自带的语音合成，不同设备上的音色与是否支持英语朗读会有差别。</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>词表来源：C. K. Ogden, <em>Basic English</em>（1930）· 850 词表为公开领域内容。</p>
+  <p>学习进度、生词本、测验成绩只保存在你这台设备的浏览器里，不会上传到任何地方。清除浏览器数据会让进度消失。</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* SECTION: data */
+const CATS = [
+  { key:'ops', name:'操作词', en:'Operations', n:100, accent:'var(--c-ops)',
+    desc:'让句子转起来的「引擎」：动词、介词、连词、代词。这组最该先背。',
+    eg:'come · get · put · with · very',
+    data:'be~是；存在（am / is / are / was / were / been）|go~去（went / gone）|come~来（came）|get~获得（got）|give~给予（gave / given）|take~拿（took / taken）|put~放|make~制作（made）|do~做（did / done）|have~有（had / has）|keep~持有（kept）|let~让|seem~看来好像|see~看（saw / seen）|say~说（said）|send~发送（sent）|will~将；愿意（would）|may~可能；可以（might）|on~在……上面|off~离开；关闭|of~……的|at~在（地点、时刻）|in~在……里面|out~在外面|from~从|to~到|before~在……以前|after~在……以后|up~向上|down~向下|over~在……之上|under~在……下面|across~横越|through~穿过|for~为了|against~反对|between~在（两者）之间|among~在……之中|about~关于；在……附近|by~被；由；在……旁边|with~用；和|as~作为；当……时|till~直到……为止|than~比|a~一个|the~这；那|all~全体；全部|any~任何一个|every~每一个|little~小的；少的（less / least）|much~许多；非常（more / most）|no~不；没有|other~另一个；其余的|some~有些；某些|such~这样的；如此的|that~那|this~这|I~我|he~他|you~你|who~谁|and~和|because~因为|but~但是|or~或者|if~如果；是否|though~虽然|while~当……的时候|how~怎样|when~什么时候|where~哪里|why~为什么|again~再一次|ever~从来；永远|far~远|forward~向前|here~这里|near~近；接近|now~现在|still~还；仍然|then~那时|there~在那里|together~一起|well~很好|almost~几乎|enough~足够的|even~甚至|not~不|only~只；仅仅|quite~相当|so~这么；那么|very~非常|tomorrow~明天|yesterday~昨天|north~北方|south~南方|east~东方|west~西方|please~请；使高兴|yes~是'
+  },
+  { key:'pic', name:'画得出来的东西', en:'Picturable Things', n:200, accent:'var(--c-pic)',
+    desc:'看得见摸得着的具体事物，最容易记，也最容易在生活中用上。',
+    eg:'apple · bridge · window · spoon',
+    data:'angle~角；角度|ant~蚂蚁|apple~苹果|arch~拱形|arm~手臂|army~军队|baby~婴儿|bag~袋子|ball~球|band~带子；乐队|basin~盆|basket~篮子|bath~浴缸；洗澡|bed~床|bee~蜜蜂|bell~钟；铃|berry~莓果|bird~鸟|blade~刀刃；刀片|board~木板；板|boat~小船|bone~骨头|book~书|boot~靴子|bottle~瓶子|box~盒子|boy~男孩|brain~大脑|brake~刹车|branch~树枝；分支|brick~砖|bridge~桥|brush~刷子|bucket~水桶|bulb~灯泡；球茎|button~纽扣|cake~蛋糕|camera~照相机|card~卡片；纸牌|cart~小车|carriage~车厢|cat~猫|chain~链子|cheese~奶酪|chest~胸部；箱子|chicken~鸡；鸡肉|chin~下巴|church~教堂|circle~圆圈|clock~时钟|cloud~云|coat~外套|collar~衣领|comb~梳子|cord~绳子；电线|cow~母牛|cup~杯子|curtain~窗帘；幕布|cushion~垫子|dog~狗|door~门|drain~排水管|drawer~抽屉|dress~连衣裙；穿衣|drop~一滴；落下|ear~耳朵|egg~蛋；鸡蛋|engine~发动机；机车|eye~眼睛|face~脸|farm~农场|feather~羽毛|finger~手指|fish~鱼|flag~旗子|floor~地板|fly~苍蝇；飞|foot~脚|fork~叉子|frame~框架；画框|garden~花园|girl~女孩|glove~手套|goat~山羊|gun~枪；炮|hair~头发；毛发|hammer~锤子|hand~手|hat~帽子|head~头|heart~心脏；中心|hook~钩子|horn~兽角；号角|horse~马|hospital~医院|house~房子|island~岛屿|jewel~宝石|kettle~水壶|key~钥匙；答案|knee~膝盖|knife~刀|knot~绳结|leaf~叶子|leg~腿|library~图书馆|line~线；一行|lip~嘴唇|lock~锁|map~地图|match~火柴；比赛|monkey~猴子|moon~月亮|mouth~嘴|muscle~肌肉|nail~指甲；钉子|neck~脖子|needle~针|nerve~神经；勇气|net~网|nose~鼻子|nut~坚果|office~办公室|orange~橙子；橙色|oven~炉子；烤箱|parcel~包裹|pen~钢笔|pencil~铅笔|picture~图画；照片|pig~猪|pin~别针；大头针|pipe~管子；水管|plane~平面；飞机|plate~盘子|plow~犁|pocket~口袋|pot~罐；锅|potato~马铃薯|prison~监狱|pump~抽水机；打气筒|rail~栏杆；铁轨|rat~大鼠|receipt~收据；发票|ring~戒指；铃声|rod~杆；棒|roof~屋顶|root~根；根源|sail~帆；航行|school~学校|scissors~剪刀|screw~螺丝钉|seed~种子|sheep~绵羊|shelf~架子；搁板|ship~轮船|shirt~衬衫|shoe~鞋|skin~皮肤|skirt~裙子|snake~蛇|sock~短袜|spade~铲子|sponge~海绵|spoon~勺子|spring~春天；弹簧；泉|square~正方形；广场|stamp~邮票；图章|star~星星；明星|station~车站；站|stem~（植物）茎；干|stick~枝条；棍棒|stocking~长袜|stomach~胃；肚子|store~商店|street~街道|sun~太阳|table~桌子|tail~尾巴|thread~线；线索|throat~喉咙|thumb~拇指|ticket~票|toe~脚趾|tongue~舌头|tooth~牙齿|town~城镇|train~火车|tray~托盘|tree~树|trousers~裤子|umbrella~雨伞|wall~墙|watch~手表；观看|wheel~轮子|whip~鞭子|whistle~口哨|window~窗户|wing~翅膀|wire~金属线；电线|worm~虫'
+  },
+  { key:'gen', name:'常用抽象名词', en:'General Things', n:400, accent:'var(--c-gen)',
+    desc:'看不见但天天要用的词：时间、想法、社会、工作。阅读和写作最缺这一组。',
+    eg:'idea · time · question · work',
+    data:'account~账；说明|act~行动；法案|addition~增加|adjustment~调整|advertisement~广告|agreement~协议；同意|air~空气；空中|amount~数量|amusement~乐趣|animal~动物|answer~回答|apparatus~器械；装置|approval~批准；赞同|argument~争论|art~艺术|attack~进攻；攻击|attempt~尝试|attention~注意|attraction~吸引|authority~当局；权威|back~背部；后面|balance~平衡；天平|base~基础；基地|behavior~行为|belief~相信；信念|birth~出生|bit~一小块；少量|bite~咬；一口|blood~血|blow~击打；吹风|body~身体|brass~黄铜|bread~面包|breath~呼吸|brother~兄弟|building~建筑物|burn~烧伤；灼伤|burst~爆发；破裂|business~生意；事务|butter~黄油|canvas~帆布；画布|care~照料；小心|cause~原因；引起|chalk~粉笔|chance~机会|change~变化；零钱|cloth~布|coal~煤|color~颜色|comfort~舒适；安慰|committee~委员会|company~公司；陪伴|comparison~比较|competition~竞争；比赛|condition~状况；条件|connection~连接；关系|control~控制|cook~厨师；烹调|copper~铜|copy~一份；复制|cork~软木|cotton~棉花；棉布|cough~咳嗽|country~国家；乡下|cover~遮盖物|crack~裂缝|credit~信用；赊账|crime~罪行|crush~压碎|cry~哭；喊叫|current~水流；当前的|curve~曲线；弯道|damage~损害|danger~危险|daughter~女儿|day~白天；一天|death~死亡|debt~债务|decision~决定|degree~度；程度；学位|design~设计|desire~渴望|destruction~破坏|detail~细节|development~发展|digestion~消化|direction~方向|discovery~发现|discussion~讨论|disease~疾病|disgust~厌恶|distance~距离|distribution~分配；分布|division~划分；分开|doubt~怀疑|drink~饮料；喝|driving~驾驶|dust~灰尘|earth~地球；泥土|edge~边缘|education~教育|effect~效果；结果|end~末端；结束|error~错误|event~事件|example~例子|exchange~交换|existence~存在|expansion~扩展|experience~经验；经历|expert~专家|fact~事实|fall~落下；秋天|family~家庭；家人|father~父亲|fear~害怕|feeling~感觉|fiction~小说；虚构|field~田野；领域|fight~战斗；争吵|fire~火；解雇|flame~火焰|flight~飞行；航班|flower~花|fold~折叠|food~食物|force~力量；武力|form~形状；表格|friend~朋友|front~前面|fruit~水果|glass~玻璃；杯子|gold~黄金|government~政府|grain~谷物；颗粒|grass~草|grip~紧握|group~团体；组|growth~生长；增长|guide~向导；指南|harbor~港口|harmony~和谐；融洽|hate~仇恨；憎恨|hearing~听力；听|heat~热；加热|help~帮助|history~历史；历史故事|hole~洞；孔|hope~希望|hour~小时|humor~幽默|ice~冰|idea~想法；主意|impulse~冲动|increase~增加|industry~工业；勤勉|ink~墨水|insect~昆虫|instrument~仪器；乐器|insurance~保险|interest~兴趣；利息|invention~发明|iron~铁；熨斗|jelly~果冻；胶冻|join~连接处；参加|journey~旅程|judge~法官；判断|jump~跳跃|kick~踢|kiss~吻|knowledge~知识；了解|land~陆地；土地|language~语言|laugh~笑|law~法律|lead~铅；领导|learn~学习|leather~皮革|letter~字母；信件|level~水平；高度|lift~举起；电梯|light~光；灯；轻的|limit~限度|linen~亚麻布|liquid~液体|list~名单；清单|look~看；表情|loss~失去；损失|love~爱|machine~机器|man~男人；人|manager~经理|mark~记号；分数|market~市场|mass~大量；团块|meal~一餐|measure~测量；措施|meat~肉|meeting~会议|memory~记忆；回忆|metal~金属|middle~中间|milk~牛奶|mind~头脑；介意|mine~矿；我的|minute~分钟|mist~薄雾|money~钱|month~月份|morning~早晨|mother~母亲|motion~动作；运动|mountain~山|move~移动|music~音乐|name~名字|nation~国家；民族|need~需要|news~新闻|night~夜晚|noise~噪音|note~笔记；便条|number~数字；号码|observation~观察|offer~提供；出价|oil~油|operation~操作；手术|opinion~意见|order~顺序；命令；点单|organization~组织|ornament~装饰品|owner~物主；所有者|page~页|pain~疼痛|paint~油漆；绘画|paper~纸；论文|part~部分|paste~浆糊|payment~支付|peace~和平|person~人|place~地方；放置|plant~植物；种植|play~玩耍；戏剧|pleasure~愉快|point~尖端；一点|poison~毒药|polish~擦亮；上光|porter~搬运工|position~位置；职位|powder~粉末|power~力量；权力|price~价格|print~印刷|process~过程；步骤|produce~产品；生产|profit~利润|property~财产；房产|prose~散文|protest~抗议|pull~拉|punishment~惩罚|purpose~目的|push~推|quality~质量；品质|question~问题|rain~雨|range~排；范围|rate~比率；速度|ray~光线；射线|reaction~反应|reading~阅读|reason~理由|record~记录；唱片|regret~遗憾；后悔|relation~关系|religion~宗教|representative~代表|request~请求|respect~尊敬|rest~休息；其余|reward~奖赏；报答|rhythm~节奏|rice~稻米；米饭|river~河流|road~道路|roll~滚动；一卷|room~房间；空间|rub~摩擦|rule~规则；统治|run~跑|salt~盐|sand~沙子|scale~刻度；比例；秤|science~科学|sea~海|seat~座位|secretary~秘书|selection~选择|self~自己|sense~感觉；道理|servant~仆人|sex~性别|shade~树荫；阴暗|shake~摇动|shame~羞耻|shock~冲击；震惊|side~旁边；侧面|sign~标志；手势|silk~丝绸|silver~银；银器|sister~姐妹|size~尺寸；大小|sky~天空|sleep~睡觉|slip~滑动；溜走；疏忽|slope~斜坡；倾斜|smash~打碎；猛撞|smell~气味；闻|smile~微笑|smoke~烟；吸烟|sneeze~打喷嚏|snow~雪|soap~肥皂|society~社会|son~儿子|song~歌曲|sort~种类|sound~声音|soup~汤|space~空间；太空|stage~舞台；阶段|start~开始|statement~陈述；声明|steam~蒸汽|steel~钢|step~脚步；步骤|stitch~一针；缝线|stone~石头|stop~停止|story~故事|stretch~伸展|structure~结构；建筑物|substance~物质|sugar~糖|suggestion~建议|summer~夏天|support~支持；支撑|surprise~惊奇；意外|swim~游泳|system~系统|talk~谈话|taste~味觉；味道|tax~税|teach~教|tendency~倾向|test~测验；检验|theory~理论|thing~东西；事物|thought~思想；想法|thunder~雷声|time~时间；次数|tin~锡；罐头|top~顶部；最高的|touch~接触；触觉|trade~贸易；手艺|transport~运输|trick~诡计；把戏|trouble~麻烦；困难|turn~转动；轮流|twist~扭转；揉捏|unit~单位；单元|use~使用；用途|value~价值|verse~诗；韵文|vessel~容器；船只|view~景色；观点|voice~（人的）嗓音|walk~走；散步|war~战争|wash~洗|waste~浪费；废弃物|water~水|wave~波浪；挥手|wax~蜡|way~路；方法|weather~天气|week~星期|weight~重量|wind~风|wine~葡萄酒|winter~冬天|woman~女人|wood~木头；树林|wool~羊毛|word~词；话|work~工作；作品|wound~伤口|writing~书写；著作|year~年'
+  },
+  { key:'qua', name:'普通形容词', en:'Qualities · General', n:100, accent:'var(--c-qua)',
+    desc:'描述世界的形状、颜色、好坏。有了它们，句子才生动。',
+    eg:'bright · heavy · possible',
+    data:'able~有能力的|acid~酸的|angry~生气的|automatic~自动的|beautiful~美丽的|black~黑色的|boiling~沸腾的；滚烫的|bright~明亮的；聪明的|broken~破碎的|brown~褐色的|cheap~便宜的|chemical~化学的|chief~主要的；首席的|clean~干净的|clear~清澈的；清楚的|common~普通的；共同的|complex~复杂的|conscious~有意识的|cut~切过的|deep~深的|dependent~依靠的|early~早的|elastic~有弹性的|electric~电的|equal~相等的|fat~肥胖的|fertile~肥沃的；多产的|first~第一的；最初的|fixed~固定的|flat~平的；扁平的|free~自由的；免费的|frequent~经常的|full~满的；饱的|general~一般的；总体的|good~好的|great~大的；伟大的|grey~灰色的|hanging~悬挂的|happy~快乐的|hard~硬的；困难的|healthy~健康的|high~高的|hollow~空心的|important~重要的|kind~亲切的；种类的|like~相似的|living~活着的；生动的|long~长的|male~男性的|married~已婚的|material~物质的；材料|medical~医学的|military~军事的|natural~自然的|necessary~必要的|new~新的|normal~正常的|open~开着的；公开的|parallel~平行的|past~过去的|physical~身体的；物理的|political~政治的|poor~贫穷的；可怜的|possible~可能的|present~在场的；现在的|private~私人的|probable~很可能的|quick~快的|quiet~安静的|ready~准备好的|red~红色的|regular~规则的；定期的|responsible~负责任的|right~右边的；正确的|round~圆的|same~同样的|second~第二的|separate~分开的|serious~严肃的；严重的|sharp~锋利的；敏锐的|smooth~平滑的|sticky~粘的|stiff~硬的；僵直的|straight~直的；笔直的|strong~强壮的；坚固的|sudden~突然的|sweet~甜的；甜蜜的|tall~（人）高的|thick~厚的；浓的|tight~紧的|tired~疲倦的|true~真实的；正确的|violent~猛烈的；暴力的|waiting~等待的|warm~温暖的|wet~湿的|wide~宽阔的|wise~明智的|yellow~黄色的|young~年轻的'
+  },
+  { key:'opp', name:'成对的形容词', en:'Qualities · Opposites', n:50, accent:'var(--c-opp)',
+    desc:'这 50 个词都有反义词，成对记忆最省事：一个记牢，另一个白送。',
+    eg:'awake ↔ asleep · safe ↔ unsafe',
+    data:'awake~醒着的|bad~坏的|bent~弯曲的|bitter~苦的；痛苦的|blue~蓝色的|certain~肯定的|cold~寒冷的|complete~完整的；完成的|cruel~残忍的|dark~黑暗的；深色的|dead~死的|dear~亲爱的；昂贵的|delicate~娇贵的；精巧的|different~不同的|dirty~脏的|dry~干的|false~假的；错误的|female~女性的|foolish~愚蠢的|future~未来的|green~绿色的；懂环境的|ill~生病的|last~最后的；上一个|late~晚的；迟到的|left~左边的|loose~松的|loud~大声的|low~低的|mixed~混合的|narrow~狭窄的|old~年老的；旧的|opposite~相反的|public~公共的|rough~粗糙的；粗略的|sad~难过的|safe~安全的|secret~秘密的|short~短的；矮的|shut~关闭的|simple~简单的|slow~慢的|small~小的|soft~柔软的|solid~结实的；固体的|special~特别的|strange~奇怪的；陌生的|thin~薄的；瘦的|white~白色的|wrong~错误的|expensive~昂贵的'
+  }
+];
+
+/* SECTION: state */
+const WORDS = [];
+CATS.forEach(function(c){
+  c.data.split('|').forEach(function(pair, i){
+    const k = pair.indexOf('~');
+    WORDS.push({
+      w: pair.slice(0, k).trim(),
+      m: pair.slice(k + 1).trim(),
+      cat: c.key,
+      pos: c.en.split(' ')[0],
+      accent: c.accent,
+      catName: c.name,
+      no: WORDS.length + 1
+    });
+  });
+});
+const TOTAL = WORDS.length;
+const LS = { done:'be850:done', note:'be850:note', best:'be850:best' };
+
+function loadSet(key){
+  try { const v = JSON.parse(localStorage.getItem(key)); return new Set(Array.isArray(v) ? v : []); }
+  catch(e){ return new Set(); }
+}
+function saveSet(key, set){
+  try { localStorage.setItem(key, JSON.stringify(Array.from(set))); } catch(e){}
+}
+const doneSet = loadSet(LS.done);
+const noteSet = loadSet(LS.note);
+
+const $ = function(id){ return document.getElementById(id); };
+function toast(msg){
+  const t = $('toast'); t.textContent = msg; t.classList.add('on');
+  clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove('on'); }, 1800);
+}
+function esc(t){ return t; }
+
+/* SECTION: nav */
+function go(name){
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.toggle('on', p.id === 'p-' + name); });
+  document.querySelectorAll('.tab').forEach(function(b){ b.classList.toggle('on', b.dataset.go === name); });
+  if (name === 'note') renderNote();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+$('tabs').addEventListener('click', function(e){
+  const b = e.target.closest('.tab'); if (b) go(b.dataset.go);
+});
+
+/* SECTION: home render */
+function catByKey(k){ return CATS.find(function(c){ return c.key === k; }); }
+function countBy(k){ return WORDS.filter(function(w){ return w.cat === k; }).length; }
+
+function renderHome(){
+  const box = $('cat-cards'); box.textContent = '';
+  CATS.forEach(function(c){
+    const btn = document.createElement('button');
+    btn.className = 'card cat-card';
+    btn.style.setProperty('--accent', c.accent);
+    const n = document.createElement('div'); n.className = 'n'; n.textContent = c.n;
+    const h = document.createElement('h3'); h.textContent = c.name + ' ' + c.en;
+    const p = document.createElement('p'); p.textContent = c.desc;
+    const eg = document.createElement('div'); eg.className = 'eg'; eg.textContent = c.eg;
+    btn.append(n, h, p, eg);
+    btn.addEventListener('click', function(){ setFilter(c.key); go('words'); });
+    box.appendChild(btn);
+  });
+  refreshStats();
+}
+function refreshStats(){
+  $('s-total').textContent = TOTAL;
+  $('s-done').textContent = doneSet.size;
+  $('s-bar').style.width = (doneSet.size / TOTAL * 100) + '%';
+  $('s-note').textContent = noteSet.size;
+  let best = null;
+  try { best = localStorage.getItem(LS.best); } catch(e){}
+  $('s-best').textContent = (best === null || best === '') ? '—' : best + ' 分';
+}
+
+/* SECTION: word browser */
+const PAGE = 48;
+const st = { q:'', cat:'all', letter:'', onlyNew:false, page:1 };
+
+function renderFilters(){
+  const row = $('cat-filter'); row.textContent = '';
+  const items = [{ key:'all', name:'全部 ' + TOTAL }].concat(CATS.map(function(c){
+    return { key:c.key, name:c.name + ' ' + c.n };
+  }));
+  items.forEach(function(it){
+    const b = document.createElement('button');
+    b.className = 'pill' + ((st.cat === it.key) ? ' on' : '');
+    b.textContent = it.name;
+    b.addEventListener('click', function(){ setFilter(it.key); });
+    row.appendChild(b);
+  });
+
+  const al = $('alpha'); al.textContent = '';
+  const all = document.createElement('button');
+  all.textContent = '全部'; all.style.width = 'auto'; all.style.padding = '0 10px';
+  all.className = st.letter ? '' : 'on';
+  all.addEventListener('click', function(){ st.letter = ''; st.page = 1; renderFilters(); renderWords(); });
+  al.appendChild(all);
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(function(L){
+    const has = WORDS.some(function(w){ return w.w[0].toUpperCase() === L; });
+    const b = document.createElement('button');
+    b.textContent = L;
+    if (!has) b.disabled = true;
+    if (st.letter === L) b.className = 'on';
+    b.addEventListener('click', function(){ st.letter = L; st.page = 1; renderFilters(); renderWords(); });
+    al.appendChild(b);
+  });
+}
+function setFilter(k){ st.cat = k; st.page = 1; renderFilters(); renderWords(); }
+
+function matched(){
+  const q = st.q.trim().toLowerCase();
+  return WORDS.filter(function(w){
+    if (st.cat !== 'all' && w.cat !== st.cat) return false;
+    if (st.letter && w.w[0].toUpperCase() !== st.letter) return false;
+    if (st.onlyNew && doneSet.has(w.w)) return false;
+    if (q && w.w.toLowerCase().indexOf(q) !== 0 && w.w.toLowerCase().indexOf(q) < 0 && w.m.indexOf(q) < 0) return false;
+    return true;
+  });
+}
+
+function wordCard(w){
+  const card = document.createElement('div');
+  card.className = 'wcard' + (doneSet.has(w.w) ? ' done' : '');
+  card.style.setProperty('--accent', w.accent);
+
+  const idx = document.createElement('div'); idx.className = 'idx'; idx.textContent = '#' + w.no;
+
+  const line = document.createElement('div'); line.className = 'w';
+  const wt = document.createElement('span'); wt.textContent = w.w;
+  const pos = document.createElement('span'); pos.className = 'pos'; pos.textContent = w.catName;
+  line.append(wt, pos);
+
+  const mean = document.createElement('div'); mean.className = 'm'; mean.textContent = w.m;
+
+  const acts = document.createElement('div'); acts.className = 'acts';
+  const say = document.createElement('button'); say.className = 'mini'; say.textContent = '🔊 发音';
+  say.addEventListener('click', function(){ speak(w.w); });
+  const dn = document.createElement('button');
+  dn.className = 'mini' + (doneSet.has(w.w) ? ' on' : '');
+  dn.textContent = doneSet.has(w.w) ? '已掌握 ✓' : '已掌握';
+  dn.addEventListener('click', function(){
+    if (doneSet.has(w.w)) { doneSet.delete(w.w); }
+    else { doneSet.add(w.w); noteSet.delete(w.w); }
+    saveSet(LS.done, doneSet); saveSet(LS.note, noteSet);
+    refreshStats(); renderWords(); if ($('p-note').classList.contains('on')) renderNote();
+  });
+  const nt = document.createElement('button');
+  nt.className = 'mini' + (noteSet.has(w.w) ? ' on' : '');
+  nt.textContent = noteSet.has(w.w) ? '在生词本 ✓' : '生词本';
+  nt.addEventListener('click', function(){
+    if (noteSet.has(w.w)) { noteSet.delete(w.w); toast('已从生词本移出'); }
+    else { noteSet.add(w.w); toast('已加入生词本'); }
+    saveSet(LS.note, noteSet); refreshStats(); renderWords();
+    if ($('p-note').classList.contains('on')) renderNote();
+  });
+  acts.append(say, dn, nt);
+  card.append(idx, line, mean, acts);
+  return card;
+}
+
+function renderWords(){
+  const list = matched();
+  const pages = Math.max(1, Math.ceil(list.length / PAGE));
+  if (st.page > pages) st.page = pages;
+  const slice = list.slice((st.page - 1) * PAGE, st.page * PAGE);
+
+  const grid = $('word-grid'); grid.textContent = '';
+  if (!slice.length) {
+    const e = document.createElement('div'); e.className = 'empty';
+    e.textContent = '没有符合条件的词，换个筛选条件试试。';
+    grid.appendChild(e);
+  } else {
+    slice.forEach(function(w){ grid.appendChild(wordCard(w)); });
+  }
+  $('count-hint').textContent = '共 ' + list.length + ' 个词'
+    + (doneSet.size ? ' · 已掌握 ' + doneSet.size + ' 个' : '');
+  $('page-hint').textContent = st.page + ' / ' + pages;
+  $('prev').disabled = st.page <= 1;
+  $('next').disabled = st.page >= pages;
+}
+
+$('q').addEventListener('input', function(e){ st.q = e.target.value; st.page = 1; renderWords(); });
+$('only-new').addEventListener('click', function(){
+  st.onlyNew = !st.onlyNew;
+  $('only-new').classList.toggle('on', st.onlyNew);
+  st.page = 1; renderWords();
+});
+$('prev').addEventListener('click', function(){ st.page--; renderWords(); });
+$('next').addEventListener('click', function(){ st.page++; renderWords(); });
+
+/* SECTION: speech */
+function speak(word){
+  if (!('speechSynthesis' in window)) { toast('这台设备的浏览器不支持发音功能'); return; }
+  try {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = 'en-US'; u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  } catch(e){ toast('发音失败，请检查系统是否安装了英语语音'); }
+}
+
+/* SECTION: flashcards */
+const fc = { list: [], i: 0, cat: 'all' };
+function buildCardList(cat){
+  const base = (cat === 'all') ? WORDS.slice() : WORDS.filter(function(w){ return w.cat === cat; });
+  return base;
+}
+function renderCardCat(){
+  const row = $('card-cat'); row.textContent = '';
+  [{ key:'all', name:'全组词表' }].concat(CATS.map(function(c){ return { key:c.key, name:c.name }; }))
+  .forEach(function(it){
+    const b = document.createElement('button');
+    b.className = 'pill' + (fc.cat === it.key ? ' on' : '');
+    b.textContent = it.name;
+    b.addEventListener('click', function(){
+      fc.cat = it.key; fc.list = buildCardList(it.key); fc.i = 0;
+      renderCardCat(); paintCard();
+    });
+    row.appendChild(b);
+  });
+}
+function paintCard(){
+  const w = fc.list[fc.i];
+  const box = $('fc'); box.classList.remove('flip');
+  if (!w) {
+    $('fc-en').textContent = '—'; $('fc-zh').textContent = '这里还没有词';
+    $('fc-pos').textContent = '第 0 / 0 张'; $('fc-meta').textContent = '';
+    return;
+  }
+  $('fc-en').textContent = w.w;
+  $('fc-zh').textContent = w.m;
+  $('fc-meta').textContent = w.catName + ' · 第 ' + w.no + ' 号';
+  $('fc-pos').textContent = '第 ' + (fc.i + 1) + ' / ' + fc.list.length + ' 张';
+  $('fc-group').textContent = (fc.cat === 'all') ? '全组词表' : catByKey(fc.cat).name;
+}
+function fcMove(step){
+  if (!fc.list.length) return;
+  fc.i = (fc.i + step + fc.list.length) % fc.list.length;
+  paintCard();
+}
+function shuffleCards(){
+  for (let i = fc.list.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = fc.list[i]; fc.list[i] = fc.list[j]; fc.list[j] = t;
+  }
+  fc.i = 0; paintCard(); toast('顺序已打乱');
+}
+$('fc').addEventListener('click', function(e){
+  if (e.target.id === 'fc-say') return;
+  $('fc').classList.toggle('flip');
+});
+$('fc-say').addEventListener('click', function(){ if (fc.list[fc.i]) speak(fc.list[fc.i].w); });
+$('fc-know').addEventListener('click', function(){
+  const w = fc.list[fc.i]; if (!w) return;
+  doneSet.add(w.w); noteSet.delete(w.w);
+  saveSet(LS.done, doneSet); saveSet(LS.note, noteSet);
+  refreshStats(); fcMove(1);
+});
+$('fc-unknow').addEventListener('click', function(){
+  const w = fc.list[fc.i]; if (!w) return;
+  noteSet.add(w.w); doneSet.delete(w.w);
+  saveSet(LS.done, doneSet); saveSet(LS.note, noteSet);
+  refreshStats(); fcMove(1);
+});
+$('fc-prev').addEventListener('click', function(){ fcMove(-1); });
+$('fc-next2').addEventListener('click', function(){ fcMove(1); });
+$('fc-shuffle').addEventListener('click', shuffleCards);
+document.addEventListener('keydown', function(e){
+  if (!$('p-cards').classList.contains('on')) return;
+  const tag = (document.activeElement && document.activeElement.tagName) || '';
+  if (tag === 'INPUT') return;
+  if (e.code === 'Space') { e.preventDefault(); $('fc').classList.toggle('flip'); }
+  if (e.code === 'ArrowRight') fcMove(1);
+  if (e.code === 'ArrowLeft') fcMove(-1);
+});
+
+/* SECTION: quiz */
+const qz = { mode:'en2zh', cat:'all', items:[], i:0, score:0, log:[] };
+function renderQuizCat(){
+  const row = $('quiz-cat'); row.textContent = '';
+  [{ key:'all', name:'全组词表' }].concat(CATS.map(function(c){ return { key:c.key, name:c.name }; }))
+  .forEach(function(it){
+    const b = document.createElement('button');
+    b.className = 'pill' + (qz.cat === it.key ? ' on' : '');
+    b.textContent = it.name;
+    b.addEventListener('click', function(){
+      qz.cat = it.key;
+      row.querySelectorAll('.pill').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+    });
+    row.appendChild(b);
+  });
+}
+document.querySelectorAll('#quiz-mode .pill').forEach(function(b){
+  b.addEventListener('click', function(){
+    qz.mode = b.dataset.mode;
+    document.querySelectorAll('#quiz-mode .pill').forEach(function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+  });
+});
+function pick(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
+function makeQuiz(){
+  const pool = (qz.cat === 'all') ? WORDS : WORDS.filter(function(w){ return w.cat === qz.cat; });
+  if (pool.length < 5) return [];
+  const shuffled = pool.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = t;
+  }
+  const items = [];
+  for (let i = 0; i < Math.min(10, shuffled.length); i++) {
+    const stem = shuffled[i];
+    const distract = [];
+    let guard = 0;
+    while (distract.length < 3 && guard < 200) {
+      guard++;
+      const cand = pick(WORDS);
+      const val = qz.mode === 'en2zh' ? cand.m : cand.w;
+      if (cand.w === stem.w) continue;
+      if (distract.indexOf(val) >= 0) continue;
+      distract.push(val);
+    }
+    const correct = qz.mode === 'en2zh' ? stem.m : stem.w;
+    items.push({ word: stem, correct: correct, opts: distract.concat([correct]).sort(function(){ return Math.random() - .5; }) });
+  }
+  return items;
+}
+function startQuiz(){
+  qz.items = makeQuiz();
+  if (!qz.items.length) { toast('词数太少，换一个大一点的分组'); return; }
+  qz.i = 0; qz.score = 0; qz.log = [];
+  $('quiz-start').style.display = 'none';
+  $('quiz-end').style.display = 'none';
+  $('quiz-run').style.display = 'block';
+  paintQuiz();
+}
+function paintQuiz(){
+  const it = qz.items[qz.i];
+  $('q-step').textContent = '第 ' + (qz.i + 1) + ' / ' + qz.items.length + ' 题';
+  $('q-score').textContent = '得分 ' + qz.score;
+  $('q-bar').style.width = (qz.i / qz.items.length * 100) + '%';
+  $('q-stem').textContent = qz.mode === 'en2zh' ? it.word.w : it.word.m;
+  $('q-ask').textContent = qz.mode === 'en2zh' ? '选出正确的中文意思' : '选出对应的英文单词';
+  const box = $('q-opts'); box.textContent = '';
+  it.opts.forEach(function(o){
+    const b = document.createElement('button');
+    b.className = 'opt'; b.textContent = o;
+    b.addEventListener('click', function(){ answer(b, o, it); });
+    box.appendChild(b);
+  });
+}
+function answer(btn, val, it){
+  const right = (val === it.correct);
+  document.querySelectorAll('#q-opts .opt').forEach(function(b){
+    b.disabled = true;
+    if (b.textContent === it.correct) b.classList.add('right');
+  });
+  if (!right) btn.classList.add('wrong'); else qz.score++;
+  qz.log.push({ word: it.word, right: right, picked: val });
+  if (!right) { noteSet.add(it.word.w); saveSet(LS.note, noteSet); }
+  refreshStats();
+  setTimeout(function(){
+    qz.i++;
+    if (qz.i >= qz.items.length) endQuiz(); else paintQuiz();
+  }, 850);
+}
+function endQuiz(){
+  $('quiz-run').style.display = 'none';
+  $('quiz-end').style.display = 'block';
+  const n = qz.items.length;
+  $('r-score').textContent = qz.score + ' / ' + n;
+  const pct = qz.score / n;
+  $('r-grade').textContent = pct === 1 ? '满！这组词已经是你的了。'
+    : pct >= .8 ? '很棒，把错掉的几个再刷一遍就满分了。'
+    : pct >= .6 ? '一半以上没问题，回到闪卡把不熟的过一遍。'
+    : '别急，这组词先回词库读熟，明天再来一次。';
+  let best = 0;
+  try { best = parseInt(localStorage.getItem(LS.best) || '0', 10) || 0; } catch(e){}
+  if (qz.score > best) { try { localStorage.setItem(LS.best, String(qz.score)); } catch(e){} }
+  refreshStats();
+
+  const rv = $('r-review'); rv.textContent = '';
+  qz.log.forEach(function(l){
+    const row = document.createElement('div'); row.className = 'rv';
+    const mk = document.createElement('span');
+    mk.className = 'mk ' + (l.right ? 'y' : 'n');
+    mk.textContent = l.right ? '✓' : '×';
+    const body = document.createElement('div');
+    const b = document.createElement('b'); b.textContent = l.word.w + ' — ' + l.word.m;
+    const s = document.createElement('div');
+    s.style.color = 'var(--ink-soft)'; s.style.fontSize = '13px';
+    s.textContent = l.right ? '答对了' : '你选了「' + l.picked + '」，已放进生词本';
+    body.append(b, s);
+    row.append(mk, body);
+    rv.appendChild(row);
+  });
+}
+$('quiz-go').addEventListener('click', startQuiz);
+$('r-again').addEventListener('click', startQuiz);
+$('r-note').addEventListener('click', function(){ go('note'); });
+$('q-skip').addEventListener('click', function(){
+  const it = qz.items[qz.i];
+  qz.log.push({ word: it.word, right: false, picked: '（跳过）' });
+  noteSet.add(it.word.w); saveSet(LS.note, noteSet); refreshStats();
+  qz.i++;
+  if (qz.i >= qz.items.length) endQuiz(); else paintQuiz();
+});
+
+/* SECTION: notebook */
+function renderNote(){
+  const list = WORDS.filter(function(w){ return noteSet.has(w.w); });
+  const grid = $('note-grid'); grid.textContent = '';
+  list.forEach(function(w){ grid.appendChild(wordCard(w)); });
+  $('note-hint').textContent = '共 ' + list.length + ' 个生词';
+  $('note-empty').style.display = list.length ? 'none' : 'block';
+}
+$('note-clear').addEventListener('click', function(){
+  if (!noteSet.size) { toast('生词本已经是空的'); return; }
+  noteSet.clear(); saveSet(LS.note, noteSet); refreshStats(); renderNote(); renderWords();
+  toast('生词本已清空');
+});
+$('note-practice').addEventListener('click', function(){
+  const list = WORDS.filter(function(w){ return noteSet.has(w.w); });
+  if (list.length < 2) { toast('生词本至少要有 2 个词才能练'); return; }
+  fc.cat = 'note'; fc.list = list.slice(); fc.i = 0;
+  renderCardCat(); paintCard(); go('cards');
+  $('fc-group').textContent = '只练生词本（' + list.length + ' 个）';
+  toast('已进入生词本闪卡练习');
+});
+
+/* SECTION: init */
+renderHome();
+renderFilters();
+renderWords();
+renderCardCat();
+fc.list = buildCardList('all');
+paintCard();
+renderQuizCat();
+renderNote();
+</script>
+</body>
+</html>
